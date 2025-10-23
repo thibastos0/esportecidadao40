@@ -8,7 +8,7 @@
     
     <!-- Bootstrap CSS (WebJars) -->
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -78,17 +78,17 @@
     </div>
 </section>
 
-<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+<div class="content-sidebar-grid">
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Minha Turma Atual</h3>
             <a href="/aluno/turma" class="btn btn-primary">Ver Detalhes</a>
         </div>
-        <div class="card-content">
+        <div class="card-body">
             <h4>Futebol Sub-12</h4>
-            <p><strong>Professor:</strong> Carlos Alberto</p>
-            <p><strong>Núcleo:</strong> Ginásio Centro Cívico</p>
-            <p><strong>Horário:</strong> Seg e Qua - 16:00 às 17:00</p>
+            <p class="mb-2"><strong>Professor:</strong> Carlos Alberto</p>
+            <p class="mb-2"><strong>Núcleo:</strong> Ginásio Centro Cívico</p>
+            <p class="mb-0"><strong>Horário:</strong> Seg e Qua - 16:00 às 17:00</p>
         </div>
     </div>
 
@@ -96,8 +96,8 @@
         <div class="card-header">
             <h3 class="card-title">Últimos Comunicados</h3>
         </div>
-        <div class="card-content">
-            <ul>
+        <div class="card-body">
+            <ul class="mb-0">
                 <li><a href="/aluno/comunicados">Aula de Sábado (25/10) cancelada.</a></li>
                 <li><a href="/aluno/comunicados">Início das inscrições para Natação.</a></li>
                 <li><a href="/aluno/comunicados">Trazer garrafa de água individual.</a></li>

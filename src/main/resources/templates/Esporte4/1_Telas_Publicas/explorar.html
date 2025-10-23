@@ -22,20 +22,20 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
             <div class="container">
                 <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mainNavbar">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="/explorar">Explorar Núcleos</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/login">Dúvidas</a></li>
-                            </ul>
-                    <div class="d-flex">
-                        <a href="/login" class="btn btn-primary">Entrar</a>
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/explorar">Explorar Núcleos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Dúvidas</a></li>
+                    </ul>
+                    <div class="auth-area">
+                        <a href="/login" class="btn-auth">Entrar</a>
                     </div>
                 </div>
             </div>
@@ -92,10 +92,10 @@
                     <!-- Results column -->
                     <section class="col-lg-8">
                         <h2 class="mb-3">Encontre seu Núcleo</h2>
-                        <div id="map-container" class="mb-4" style="height: 380px;">
+                        <div class="ratio ratio-16x9 mb-4">
                             <iframe 
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117503.7329587425!2d-46.7259111367098!3d-23.54923330693994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59a68a5f36e3%3A0x6b432f22b3c10!2sPrefeitura%20de%20S%C3%A3o%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1678886000000" 
-                                allowfullscreen="" 
+                                allowfullscreen 
                                 loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade" class="w-100 h-100 border-0">
                             </iframe>
@@ -145,8 +145,6 @@
 
         <!-- Bootstrap JS bundle (WebJars) -->
         <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="/esporte4/js/main.js"></script>
+        <script src="/esporte4/js/main.js"></script>
     </body>
     </html>
-</body>
-</html>

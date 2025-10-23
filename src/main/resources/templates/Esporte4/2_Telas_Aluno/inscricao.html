@@ -8,7 +8,7 @@
     
     <!-- Bootstrap CSS (WebJars) -->
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -24,122 +24,132 @@
         </div>
     </div>
 
-    <div class="app-layout container">
     <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
-                <div class="mobile-user-greeting d-lg-none me-2">
-                    <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="alunoNavbar">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/aluno/inscricao">Inscrição</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/turma">Minha Turma</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
-                    </ul>
-                    <div class="auth-area desktop-user-greeting">
-                        <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
-                        <a href="/logout" class="btn-auth outline">Sair</a>
-                    </div>
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="alunoNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/aluno/inscricao">Inscrição</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/turma">Minha Turma</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
     <main>
         <div class="container py-4">
             <h1 class="page-title">Nova Inscrição</h1>
 
-<div class="card">
-    <h3 class="card-title">1. Dados do Aluno (via Gov.br)</h3>
-    <p style="margin-bottom: 1rem;">Estes dados são preenchidos automaticamente.</p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-        <div class="form-group">
-            <label>Nome Completo</label>
-            <input type="text" value="Carlos Eduardo Pereira" readonly>
-        </div>
-        <div class="form-group">
-            <label>Data de Nascimento</label>
-            <input type="text" value="10/05/2012" readonly>
-        </div>
-        <div class="form-group">
-            <label>CPF</label>
-            <input type="text" value="123.***.***-45" readonly>
-        </div>
-        <div class="form-group">
-            <label>Nome do Responsável</label>
-            <input type="text" value="Maria Pereira" readonly>
-        </div>
-    </div>
-</div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">1. Dados do Aluno (via Gov.br)</h3>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3">Estes dados são preenchidos automaticamente.</p>
+                    <div class="two-column-grid">
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" value="Carlos Eduardo Pereira" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Nascimento</label>
+                            <input type="text" value="10/05/2012" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" value="123.***.***-45" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Nome do Responsável</label>
+                            <input type="text" value="Maria Pereira" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-<div class="card">
-    <h3 class="card-title">2. Escolha a Modalidade e Turma</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-        <div class="form-group">
-            <label for="modalidade">Modalidade</label>
-            <select id="modalidade" name="modalidade">
-                <option value="">Selecione...</option>
-                <option value="natacao">Natação</option>
-                <option value="judo">Judô</option>
-                <option value="volei">Vôlei</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nucleo">Núcleo</label>
-            <select id="nucleo" name="nucleo">
-                <option value="">Todos</option>
-                <option value="centro">Centro Cívico</option>
-                <option value="morada">Morada do Sol</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="turno">Turno</label>
-            <select id="turno" name="turno">
-                <option value="">Todos</option>
-                <option value="manha">Manhã</option>
-                <option value="tarde">Tarde</option>
-            </select>
-        </div>
-    </div>
-    
-    <div class="turmas-disponiveis">
-        <div class="turma-disponivel-card">
-            <div>
-                <h4>Natação Infantil (8-12 anos)</h4>
-                <p>Núcleo: Centro Cívico | Horário: Ter e Qui - 09:00</p>
-                <p><strong>Vagas:</strong> <span style="color: green;">5 restantes</span></p>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">2. Escolha a Modalidade e Turma</h3>
+                </div>
+                <div class="card-body">
+                    <div class="three-column-grid mb-4">
+                        <div class="form-group">
+                            <label for="modalidade">Modalidade</label>
+                            <select id="modalidade" name="modalidade">
+                                <option value="">Selecione...</option>
+                                <option value="natacao">Natação</option>
+                                <option value="judo">Judô</option>
+                                <option value="volei">Vôlei</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nucleo">Núcleo</label>
+                            <select id="nucleo" name="nucleo">
+                                <option value="">Todos</option>
+                                <option value="centro">Centro Cívico</option>
+                                <option value="morada">Morada do Sol</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="turno">Turno</label>
+                            <select id="turno" name="turno">
+                                <option value="">Todos</option>
+                                <option value="manha">Manhã</option>
+                                <option value="tarde">Tarde</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="turmas-disponiveis">
+                        <div class="turma-disponivel-card">
+                            <div>
+                                <h4>Natação Infantil (8-12 anos)</h4>
+                                <p>Núcleo: Centro Cívico | Horário: Ter e Qui - 09:00</p>
+                                <p><strong>Vagas:</strong> <span class="text-success">5 restantes</span></p>
+                            </div>
+                            <a href="#" class="btn btn-secondary">Selecionar Turma</a>
+                        </div>
+                        <div class="turma-disponivel-card">
+                            <div>
+                                <h4>Judô Mirim (10-14 anos)</h4>
+                                <p>Núcleo: Morada do Sol | Horário: Seg e Qua - 15:00</p>
+                                <p><strong>Vagas:</strong> <span class="text-danger">Esgotadas</span></p>
+                            </div>
+                            <a href="#" class="btn btn-secondary" disabled>Lista de Espera</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="btn btn-secondary">Selecionar Turma</a>
-        </div>
-        <div class="turma-disponivel-card">
-            <div>
-                <h4>Judô Mirim (10-14 anos)</h4>
-                <p>Núcleo: Morada do Sol | Horário: Seg e Qua - 15:00</p>
-                <p><strong>Vagas:</strong> <span style="color: red;">Esgotadas</span></p>
-            </div>
-            <a href="#" class="btn btn-secondary" disabled>Lista de Espera</a>
-        </div>
-    </div>
-</div>
 
-<div class="card">
-    <h3 class="card-title">3. Confirmação e Termos</h3>
-    <div class="policy-box">
-        <strong>Política de Faltas:</strong> O aluno que acumular 3 (três) faltas consecutivas ou 5 (cinco) alternadas sem justificativa médica será automaticamente desligado da turma.
-    </div>
-    <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-        <input type="checkbox" id="termos" style="width: auto;">
-        <label for="termos" style="margin: 0;">Li e concordo com a política de faltas e termos de uso.</label>
-    </div>
-        <button class="btn btn-primary" style="font-size: 1.1rem;">Confirmar Inscrição</button>
-    </div>
-            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">3. Confirmação e Termos</h3>
+                </div>
+                <div class="card-body">
+                    <div class="policy-box">
+                        <strong>Política de Faltas:</strong> O aluno que acumular 3 (três) faltas consecutivas ou 5 (cinco) alternadas sem justificativa médica será automaticamente desligado da turma.
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="termos">
+                        <label for="termos">Li e concordo com a política de faltas e termos de uso.</label>
+                    </div>
+                    <button class="btn btn-primary btn-lg">Confirmar Inscrição</button>
+                </div>
             </div>
+        </div>
     </main>
 
     <footer class="main-footer">

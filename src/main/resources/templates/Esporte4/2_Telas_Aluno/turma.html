@@ -8,7 +8,7 @@
     
     <!-- Bootstrap CSS (WebJars) -->
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
@@ -24,96 +24,94 @@
         </div>
     </div>
 
-    <div class="app-layout container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm esporte-navbar">
-            <div class="container">
-                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
-                <div class="mobile-user-greeting d-lg-none me-2">
-                    <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
-                </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="alunoNavbar">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/inscricao">Inscrição</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="/aluno/turma">Minha Turma</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
-                    </ul>
-                    <div class="auth-area desktop-user-greeting">
-                        <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
-                        <a href="/logout" class="btn-auth outline">Sair</a>
-                    </div>
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="alunoNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/inscricao">Inscrição</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/aluno/turma">Minha Turma</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
     <main>
         <div class="container py-4">
             <h1 class="page-title">Minha Turma: Futebol Sub-12</h1>
 
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Detalhes da Turma</h3>
-    </div>
-    <div class="card-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-        <p><strong>Professor:</strong> Carlos Alberto</p>
-        <p><strong>Núcleo:</strong> Ginásio Centro Cívico</p>
-        <p><strong>Horário:</strong> Segundas e Quartas, 16:00 - 17:00</p>
-        <p><strong>Matrícula:</strong> <span class="badge badge-success">Ativa</span></p>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Histórico de Aulas e Presença</h3>
-    </div>
-    <div class="card-content">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Data</th>
-                    <th>Tópico da Aula</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>20/10/2025</td>
-                    <td>Treino de finalização e chute a gol.</td>
-                    <td><span class="badge badge-success">Presente</span></td>
-                </tr>
-                <tr>
-                    <td>18/10/2025</td>
-                    <td>Fundamentos de passe e domínio.</td>
-                    <td><span class="badge badge-success">Presente</span></td>
-                </tr>
-                <tr>
-                    <td>15/10/2025</td>
-                    <td>Jogo coletivo (Tática).</td>
-                    <td><span class="badge badge-danger">Falta</span></td>
-                </tr>
-                <tr>
-                    <td>13/10/2025</td>
-                    <td>Aquecimento e circuito físico.</td>
-                    <td><span class="badge badge-warning">Falta Justificada</span></td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>    
-
-</body>
-    <!-- Bootstrap JS bundle (WebJars) -->
-    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script src="/esporte4/js/main-aluno.js"></script>
-</html>
-</body>
-</html>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">groups</span>Detalhes da Turma</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">person</span><strong>Professor:</strong> Carlos Alberto</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Núcleo:</strong> Ginásio Centro Cívico</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">schedule</span><strong>Horário:</strong> Segundas e Quartas, 16:00 - 17:00</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">badge</span><strong>Matrícula:</strong> <span class="badge badge-success">Ativa</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history_edu</span>Histórico de Aulas e Presença</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Tópico da Aula</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>20/10/2025</td>
+                                    <td>Treino de finalização e chute a gol.</td>
+                                    <td><span class="badge badge-success">Presente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>18/10/2025</td>
+                                    <td>Fundamentos de passe e domínio.</td>
+                                    <td><span class="badge badge-success">Presente</span></td>
+                                </tr>
+                                <tr>
+                                    <td>15/10/2025</td>
+                                    <td>Jogo coletivo (Tática).</td>
+                                    <td><span class="badge badge-danger">Falta</span></td>
+                                </tr>
+                                <tr>
+                                    <td>13/10/2025</td>
+                                    <td>Aquecimento e circuito físico.</td>
+                                    <td><span class="badge badge-warning">Falta Justificada</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="main-footer">
