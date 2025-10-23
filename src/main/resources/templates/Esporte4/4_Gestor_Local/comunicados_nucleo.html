@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicados do Núcleo - Gestor | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        .reading-status {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .reading-status .read { color: var(--cor-secundaria); }
+        .reading-status .unread { color: var(--cor-destaque); }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_nucleo.html">Dashboard</a></li>
+                    <li><a href="gestao_materiais.html">Materiais</a></li>
+                    <li><a href="gestao_quadras.html">Quadras</a></li>
+                    <li><a href="comunicados_nucleo.html" class="active">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Comunicados Gerais do Núcleo</h1>
+
+            <section class="filters" style="margin-bottom: 3rem; padding: 1.5rem; border: none;">
+                <h3><span class="material-icons-outlined">campaign</span> Enviar Aviso Geral</h3>
+                <form>
+                    <div class="filter-group">
+                        <label for="destinatario">Destinatários</label>
+                        <select id="destinatario" name="destinatario">
+                            <option value="alunos">Todos os Alunos do Núcleo</option>
+                            <option value="professores">Todos os Professores do Núcleo</option>
+                            <option value="todos">Todos (Alunos e Professores)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="titulo">Título do Aviso</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Aviso de Feriado ou Mudança de Horário">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="mensagem">Conteúdo do Aviso</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva o aviso detalhadamente..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span class="material-icons-outlined" style="vertical-align: middle;">send</span> Publicar Aviso Geral
+                    </button>
+                </form>
+            </section>
+
+            <section>
+                <h2 style="text-align: left; margin-bottom: 1rem; color: var(--cor-primaria);">Monitoramento e Histórico</h2>
+                <div class="results-list">
+                    
+                    <article class="nucleo-card" style="grid-template-columns: 2fr 1fr auto;">
+                        <div class="nucleo-info">
+                            <h3 style="font-size: 1.2rem;">FECHAMENTO: Feriado de Finados (02/11)</h3>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Todos (Alunos e Professores)</p>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 20/10/2025</p>
+                        </div>
+                        <div class="nucleo-actions" style="border-top: none;">
+                            <p class="reading-status read"><span class="material-icons-outlined">check_circle_outline</span> **Lidos**: 85% (157/185)</p>
+                        </div>
+                        <div class="nucleo-actions" style="border-top: none;">
+                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Ver Detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="nucleo-card" style="grid-template-columns: 2fr 1fr auto;">
+                        <div class="nucleo-info">
+                            <h3 style="font-size: 1.2rem;">Alerta: Treinamento de Professores (Obrigatório)</h3>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Professores do Núcleo</p>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 18/10/2025</p>
+                        </div>
+                        <div class="nucleo-actions" style="border-top: none;">
+                            <p class="reading-status unread"><span class="material-icons-outlined">pending</span> **Lidos**: 50% (3/6)</p>
+                        </div>
+                        <div class="nucleo-actions" style="border-top: none;">
+                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Ver Detalhes</a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão Local</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

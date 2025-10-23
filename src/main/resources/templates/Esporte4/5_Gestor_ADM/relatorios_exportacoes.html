@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios e Exportações - ADM | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        .report-section {
+            background-color: var(--cor-fundo-card);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: var(--sombra-card);
+            margin-bottom: 3rem;
+        }
+        .report-section h3 {
+            color: var(--cor-primaria);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_central.html">Dashboard</a></li>
+                    <li><a href="cadastro_geral.html">Cadastro Geral</a></li>
+                    <li><a href="gestao_usuarios.html">Usuários</a></li>
+                    <li><a href="relatorios_exportacoes.html" class="active">Relatórios</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Relatórios e Exportações do Sistema</h1>
+
+            <section class="report-section">
+                <h3><span class="material-icons-outlined">calendar_today</span> Relatório de Frequência Geral</h3>
+                <p style="margin-bottom: 1rem;">Gere relatórios detalhados sobre a assiduidade dos alunos por núcleo e turma.</p>
+                <form style="display: flex; gap: 20px; align-items: flex-end;">
+                    <div class="filter-group" style="flex-grow: 1;">
+                        <label for="periodo_frequencia">Período</label>
+                        <select id="periodo_frequencia">
+                            <option value="mensal">Último Mês</option>
+                            <option value="trimestral">Último Trimestre</option>
+                            <option value="anual">Ano Atual</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="flex-grow: 1;">
+                        <label for="nucleo_relatorio">Filtrar por Núcleo (Opcional)</label>
+                        <select id="nucleo_relatorio">
+                            <option value="">Todos os Núcleos</option>
+                            <option value="centro">Núcleo Centro Cívico</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="material-icons-outlined">picture_as_pdf</span> Gerar PDF
+                    </button>
+                    <button type="submit" class="btn btn-secondary">
+                        <span class="material-icons-outlined">table_chart</span> Exportar Excel
+                    </button>
+                </form>
+            </section>
+
+            <section class="report-section">
+                <h3><span class="material-icons-outlined">analytics</span> Controle de Vagas x Ocupação</h3>
+                <p style="margin-bottom: 1rem;">Visualize a capacidade total versus ocupação atual das turmas.</p>
+                <form style="display: flex; gap: 20px; align-items: flex-end;">
+                    <div class="filter-group" style="flex-grow: 1;">
+                        <label for="modalidade_ocupacao">Filtrar por Modalidade</label>
+                        <select id="modalidade_ocupacao">
+                            <option value="">Todas as Modalidades</option>
+                            <option value="futebol">Futebol</option>
+                            <option value="volei">Vôlei</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="flex-grow: 1;">
+                        <label for="status_ocupacao">Status da Vaga</label>
+                        <select id="status_ocupacao">
+                            <option value="todos">Todos</option>
+                            <option value="abertas">Vagas Abertas</option>
+                            <option value="esgotadas">Vagas Esgotadas</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="material-icons-outlined">picture_as_pdf</span> Gerar PDF
+                    </button>
+                    <button type="submit" class="btn btn-secondary">
+                        <span class="material-icons-outlined">table_chart</span> Exportar Excel
+                    </button>
+                </form>
+            </section>
+            
+            <section class="report-section">
+                <h3><span class="material-icons-outlined">inventory</span> Relatório de Inventário Central</h3>
+                <p style="margin-bottom: 1rem;">Monitoramento do estoque total de materiais por núcleo.</p>
+                <button type="submit" class="btn btn-primary">
+                    <span class="material-icons-outlined">picture_as_pdf</span> Gerar Inventário Geral
+                </button>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão ADM</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

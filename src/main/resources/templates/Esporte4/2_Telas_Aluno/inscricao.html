@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nova Inscrição - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar (consistent with public pages) -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-layout container">
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+                <div class="mobile-user-greeting d-lg-none me-2">
+                    <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="alunoNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/aluno/inscricao">Inscrição</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/turma">Minha Turma</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
+                    </ul>
+                    <div class="auth-area desktop-user-greeting">
+                        <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
+                        <a href="/logout" class="btn-auth outline">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title">Nova Inscrição</h1>
+
+<div class="card">
+    <h3 class="card-title">1. Dados do Aluno (via Gov.br)</h3>
+    <p style="margin-bottom: 1rem;">Estes dados são preenchidos automaticamente.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" value="Carlos Eduardo Pereira" readonly>
+        </div>
+        <div class="form-group">
+            <label>Data de Nascimento</label>
+            <input type="text" value="10/05/2012" readonly>
+        </div>
+        <div class="form-group">
+            <label>CPF</label>
+            <input type="text" value="123.***.***-45" readonly>
+        </div>
+        <div class="form-group">
+            <label>Nome do Responsável</label>
+            <input type="text" value="Maria Pereira" readonly>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3 class="card-title">2. Escolha a Modalidade e Turma</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="form-group">
+            <label for="modalidade">Modalidade</label>
+            <select id="modalidade" name="modalidade">
+                <option value="">Selecione...</option>
+                <option value="natacao">Natação</option>
+                <option value="judo">Judô</option>
+                <option value="volei">Vôlei</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="nucleo">Núcleo</label>
+            <select id="nucleo" name="nucleo">
+                <option value="">Todos</option>
+                <option value="centro">Centro Cívico</option>
+                <option value="morada">Morada do Sol</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="turno">Turno</label>
+            <select id="turno" name="turno">
+                <option value="">Todos</option>
+                <option value="manha">Manhã</option>
+                <option value="tarde">Tarde</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="turmas-disponiveis">
+        <div class="turma-disponivel-card">
+            <div>
+                <h4>Natação Infantil (8-12 anos)</h4>
+                <p>Núcleo: Centro Cívico | Horário: Ter e Qui - 09:00</p>
+                <p><strong>Vagas:</strong> <span style="color: green;">5 restantes</span></p>
+            </div>
+            <a href="#" class="btn btn-secondary">Selecionar Turma</a>
+        </div>
+        <div class="turma-disponivel-card">
+            <div>
+                <h4>Judô Mirim (10-14 anos)</h4>
+                <p>Núcleo: Morada do Sol | Horário: Seg e Qua - 15:00</p>
+                <p><strong>Vagas:</strong> <span style="color: red;">Esgotadas</span></p>
+            </div>
+            <a href="#" class="btn btn-secondary" disabled>Lista de Espera</a>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <h3 class="card-title">3. Confirmação e Termos</h3>
+    <div class="policy-box">
+        <strong>Política de Faltas:</strong> O aluno que acumular 3 (três) faltas consecutivas ou 5 (cinco) alternadas sem justificativa médica será automaticamente desligado da turma.
+    </div>
+    <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
+        <input type="checkbox" id="termos" style="width: auto;">
+        <label for="termos" style="margin: 0;">Li e concordo com a política de faltas e termos de uso.</label>
+    </div>
+        <button class="btn btn-primary" style="font-size: 1.1rem;">Confirmar Inscrição</button>
+    </div>
+            
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+    <script src="/esporte4/js/main-aluno.js"></script>
+</body>
+</html>

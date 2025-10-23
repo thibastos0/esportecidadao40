@@ -1,0 +1,420 @@
+/*--------------------------------------------------
+  CONFIGURAÇÃO GLOBAL (Área do Aluno)
+--------------------------------------------------*/
+:root {
+    --cor-primaria: #0056a3; /* Azul "governo" */
+    --cor-secundaria: #00a859; /* Verde "governo" */
+    --cor-destaque: #f9b233; /* Amarelo */
+    --cor-texto: #333;
+    --cor-texto-claro: #666;
+    --cor-fundo-app: #f4f7fa;
+    --cor-fundo-card: #ffffff;
+    --cor-borda: #e0e6ed;
+    --sombra-card: 0 4px 12px rgba(0,0,0,0.05);
+
+    --header-height: 65px;
+    --sidebar-width: 240px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--cor-fundo-app);
+    color: var(--cor-texto);
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+}
+
+/*--------------------------------------------------
+  LAYOUT PRINCIPAL (App Shell)
+--------------------------------------------------*/
+.app-layout {
+    display: grid;
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+/* 1. Cabeçalho */
+.app-header {
+    grid-column: 1 / -1; /* Ocupa as duas colunas */
+    grid-row: 1 / 2;
+    background-color: var(--cor-fundo-card);
+    border-bottom: 1px solid var(--cor-borda);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-interna {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+.logo-interna span { color: var(--cor-secundaria); }
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.user-menu span { font-weight: 500; }
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--cor-destaque);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.logout-btn {
+    font-size: 1.5rem;
+    color: var(--cor-texto-claro);
+    margin-left: 10px;
+}
+.logout-btn:hover { color: #d9534f; }
+
+/* Botão de Menu Mobile */
+.mobile-menu-toggle {
+    display: none; /* Escondido no desktop */
+    font-size: 1.8rem;
+    color: var(--cor-primaria);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 2. Menu Lateral (Sidebar) */
+.app-sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-color: var(--cor-fundo-card);
+    border-right: 1px solid var(--cor-borda);
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+.sidebar-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--cor-texto-claro);
+    transition: all 0.2s ease;
+}
+.sidebar-nav a .icon {
+    font-size: 1.4rem;
+}
+.sidebar-nav a:hover {
+    background-color: var(--cor-fundo-app);
+    color: var(--cor-primaria);
+}
+.sidebar-nav a.active {
+    background-color: #e6f0f8; /* Azul claro */
+    color: var(--cor-primaria);
+    font-weight: 600;
+}
+
+/* 3. Conteúdo Principal */
+.app-main-content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-bottom: 1.5rem;
+}
+
+/* Overlay (Fundo escuro no mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 101;
+}
+
+/*--------------------------------------------------
+  COMPONENTES REUTILIZÁVEIS
+--------------------------------------------------*/
+/* Card Padrão */
+.card {
+    background-color: var(--cor-fundo-card);
+    border-radius: 10px;
+    box-shadow: var(--sombra-card);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--cor-borda);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.btn-primary { background-color: var(--cor-primaria); color: #fff; }
+.btn-secondary { background-color: var(--cor-secundaria); color: #fff; }
+
+/* Badges (Etiquetas) */
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.badge-success { background-color: #dff0d8; color: #3c763d; }
+.badge-danger { background-color: #f2dede; color: #a94442; }
+.badge-warning { background-color: #fcf8e3; color: #8a6d3b; }
+.badge-info { background-color: #d9edf7; color: #31708f; }
+
+/* Formulários */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 1rem;
+}
+.form-group input[readonly] {
+    background-color: #eee;
+    cursor: not-allowed;
+}
+
+/* Tabelas */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.data-table th, .data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--cor-borda);
+}
+.data-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+}
+.data-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/*--------------------------------------------------
+  TELAS ESPECÍFICAS
+--------------------------------------------------*/
+
+/* 2.1 - Dashboard */
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.indicator-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+.indicator-card .icon {
+    font-size: 2.5rem;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #e6f0f8;
+    color: var(--cor-primaria);
+}
+.indicator-card .info h4 {
+    font-size: 0.9rem;
+    color: var(--cor-texto-claro);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.indicator-card .info p {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* 2.2 - Inscrição */
+.turma-disponivel-card {
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.turma-disponivel-card h4 {
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+}
+.policy-box {
+    background-color: #fcf8e3;
+    border: 1px solid #faebcc;
+    color: #8a6d3b;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+}
+
+/* 2.4 - Comunicados */
+.comunicado-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--cor-borda);
+}
+.comunicado-item:last-child { border-bottom: none; }
+.comunicado-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+.comunicado-meta {
+    font-size: 0.9rem;
+    color: var(--cor-texto-claro);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+/*--------------------------------------------------
+  RESPONSIVIDADE (Mobile)
+--------------------------------------------------*/
+@media (max-width: 992px) {
+    .app-layout {
+        /* Coluna única: header em cima, conteúdo embaixo */
+        grid-template-columns: 1fr;
+        grid-template-rows: var(--header-height) 1fr;
+    }
+
+    .app-main-content {
+        grid-column: 1 / -1; /* Ocupa tudo */
+        padding: 1.5rem;
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* Mostra o botão hamburger */
+    }
+
+    .app-header {
+        /* Mantém o logo no centro e botões nas pontas */
+        justify-content: space-between;
+    }
+
+    /* Menu Lateral */
+    .app-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 102;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        transform: translateX(-100%); /* Começa escondido */
+        transition: transform 0.3s ease-out;
+    }
+    .app-sidebar.open {
+        transform: translateX(0); /* Aparece */
+    }
+
+    /* Overlay */
+    .sidebar-overlay.open {
+        display: block; /* Mostra o fundo escuro */
+    }
+
+    .sidebar-close-btn {
+        display: block;
+        font-size: 1.8rem;
+        background: none;
+        border: none;
+        color: var(--cor-texto-claro);
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+    }
+}
+
+/*--------------------------------------------------
+  USER GREETING VISIBILITY
+  Show a prominent username on mobile (collapsed navbar)
+--------------------------------------------------*/
+.desktop-user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.mobile-user-greeting {
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    background: #eef7ff;
+    border: 1px solid rgba(0,86,163,0.07);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 992px) {
+    .desktop-user-greeting { display: none !important; }
+    .mobile-user-greeting { display: flex !important; }
+    .mobile-user-greeting .user-name { font-size: 1.05rem; font-weight: 800; }
+}

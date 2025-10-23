@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Professor | Esporte 4.0</title>
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="presenca.html">Presença</a></li>
+                    <li><a href="materiais.html">Materiais</a></li>
+                    <li><a href="comunicados.html">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Olá, Prof. Carlos Alberto</h1>
+
+            <section class="highlights" style="padding: 0; margin-bottom: 3rem;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Resumo Geral</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">group</span>
+                        <h3>Alunos Matriculados</h3>
+                        <p style="font-size: 2rem; font-weight: 700;">45</p>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">show_chart</span>
+                        <h3>Frequência Média</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--cor-secundaria);">89%</p>
+                    </div>
+                    <div class="highlight-card"
+                        style="background-color: #fef9e7; border: 1px solid var(--cor-destaque);">
+                        <span class="material-icons-outlined icon" style="color: var(--cor-destaque);">warning</span>
+                        <h3>Alunos em Risco (3+ Faltas)</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #d9534f;">5</p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-bottom: 3rem;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Minhas Turmas</h2>
+                <div class="results-list">
+
+                    <article class="nucleo-card">
+                        <div class="nucleo-info">
+                            <h3>Futebol - Categoria Sub-10 (Manhã)</h3>
+                            <p><span class="material-icons-outlined icon">place</span> Núcleo Centro Cívico</p>
+                            <p><span class="material-icons-outlined icon">schedule</span> Segundas e Quartas, 09h00</p>
+                            <p><span class="material-icons-outlined icon">person</span> 22 Alunos</p>
+                        </div>
+                        <div class="nucleo-actions">
+                            <a href="presenca.html" class="btn btn-primary">Lançar Presença</a>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 10px;">Ver Alunos</a>
+                        </div>
+                    </article>
+
+                    <article class="nucleo-card">
+                        <div class="nucleo-info">
+                            <h3>Vôlei - Categoria Sub-15 (Tarde)</h3>
+                            <p><span class="material-icons-outlined icon">place</span> Ginásio Municipal</p>
+                            <p><span class="material-icons-outlined icon">schedule</span> Terças e Quintas, 14h30</p>
+                            <p><span class="material-icons-outlined icon">person</span> 23 Alunos</p>
+                        </div>
+                        <div class="nucleo-actions">
+                            <a href="presenca.html" class="btn btn-primary">Lançar Presença</a>
+                            <a href="#" class="btn btn-secondary" style="margin-top: 10px;">Ver Alunos</a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section class="contact-section" style="padding: 0;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Ações Rápidas</h2>
+                <div style="display: flex; gap: 20px;">
+                    <a href="professorComunicados.html" class="btn btn-govbr" style="max-width: none; margin: 0;">
+                        <span class="material-icons-outlined">chat</span> Enviar Comunicado
+                    </a>
+                    <a href="#" class="btn btn-secondary" style="max-width: none; margin: 0;">
+                        <span class="material-icons-outlined">assessment</span> Gerar Relatórios
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+
+</html>

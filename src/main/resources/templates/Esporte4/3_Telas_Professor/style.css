@@ -1,0 +1,542 @@
+/*--------------------------------------------------
+  CONFIGURAÇÃO GLOBAL (Variáveis e Reset)
+--------------------------------------------------*/
+:root {
+    --cor-primaria: #0056a3;
+    /* Azul "governo" */
+    --cor-secundaria: #00a859;
+    /* Verde "governo" */
+    --cor- destaque: #f9b233;
+    /* Amarelo */
+    --cor-texto: #333;
+    --cor-fundo: #f4f7fa;
+    --cor-fundo-card: #ffffff;
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+/*--------------------------------------------------
+  BOTÕES
+--------------------------------------------------*/
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #00417a;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--cor-secundaria);
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #008f4a;
+}
+
+/* Botão especial Gov.br */
+.btn-govbr {
+    background-color: #0e619c;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.btn-govbr:before {
+    content: 'GOV.BR';
+    font-weight: 700;
+    background: var(--cor-secundaria);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/*--------------------------------------------------
+  HEADER (Cabeçalho)
+--------------------------------------------------*/
+.main-header {
+    background-color: #fff;
+    padding: 1rem 0;
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.logo span {
+    color: var(--cor-secundaria);
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav a {
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: #eef5fa;
+    color: var(--cor-primaria);
+}
+
+/* Menu Mobile (Hamburger) */
+.mobile-menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------
+  FOOTER (Rodapé)
+--------------------------------------------------*/
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2.5rem 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.main-footer p {
+    margin-bottom: 0.5rem;
+}
+
+.main-footer a {
+    color: #fff;
+    font-weight: 600;
+}
+
+/*--------------------------------------------------
+  TELA: 1.1 - LANDING PAGE (index.html)
+--------------------------------------------------*/
+/* Seção Herói */
+.hero {
+    background: linear-gradient(rgba(0, 86, 163, 0.85), rgba(0, 86, 163, 0.85)), url(https://images.unsplash.com/photo-1543351368-3c605154d006?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2400) no-repeat center center/cover;
+    color: #fff;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Seção Destaques */
+.highlights {
+    padding: 3rem 0;
+}
+
+.highlights h2,
+.contact-section h2,
+.explore-page h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--cor-primaria);
+}
+
+.highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.highlight-card {
+    background-color: var(--cor-fundo-card);
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    padding: 2rem;
+    text-align: center;
+}
+
+.highlight-card .icon {
+    font-size: 3rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 1rem;
+}
+
+.highlight-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Seção Contato */
+.contact-section {
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.contact-section p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/*--------------------------------------------------
+  TELA: 1.2 - LOGIN (login.html)
+--------------------------------------------------*/
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.login-box {
+    background: var(--cor-fundo-card);
+    padding: 3rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    max-width: 500px;
+    width: 100%;
+}
+
+.login-box h1 {
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.login-box p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.login-info {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/*--------------------------------------------------
+  TELA: 1.3 - EXPLORAR (explorar.html)
+--------------------------------------------------*/
+.explore-page {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    /* Coluna de filtro e coluna de conteúdo */
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Filtros */
+.filters {
+    background: var(--cor-fundo-card);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    height: fit-content;
+    /* Para o painel não descer rolando */
+}
+
+.filters h3 {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.filter-group input[type="text"],
+.filter-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.filter-group .checkbox-group label {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0.25rem;
+}
+
+/* Resultados (Mapa e Lista) */
+.results h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+/* Mapa */
+#map-container {
+    height: 400px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    /* Garante que o iframe fique contido */
+    box-shadow: var(--sombra-card);
+}
+
+#map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Lista de Núcleos */
+.nucleo-card {
+    background: var(--cor-fundo-card);
+    border-radius: 8px;
+    box-shadow: var(--sombra-card);
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    /* Conteúdo e botão */
+    padding: 1.5rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nucleo-info h3 {
+    font-size: 1.4rem;
+    color: var(--cor-primaria);
+}
+
+.nucleo-info p {
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nucleo-info .icon {
+    font-size: 1.2rem;
+    color: var(--cor-secundaria);
+}
+
+.nucleo-actions {
+    text-align: center;
+}
+
+.vagas-info {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.vagas-info .abertas {
+    color: var(--cor-secundaria);
+}
+
+.vagas-info .esgotadas {
+    color: #d9534f;
+}
+
+/*--------------------------------------------------
+  RESPONSIVIDADE (Mobile)
+--------------------------------------------------*/
+@media (max-width: 992px) {
+    .explore-page {
+        grid-template-columns: 250px 1fr;
+        /* Diminui um pouco o filtro */
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Ajustes no Menu */
+    .main-nav ul {
+        display: none;
+        /* Esconde o menu desktop */
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        position: absolute;
+        top: 75px;
+        /* Altura do header */
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav ul.active {
+        display: flex;
+        /* Mostra o menu quando ativo */
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        /* Mostra o botão hamburger */
+    }
+
+    /* Ajustes na Landing Page */
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    /* Ajustes na Página Explorar */
+    .explore-page {
+        grid-template-columns: 1fr;
+        /* Coluna única: filtro em cima, mapa/lista embaixo */
+    }
+
+    .nucleo-card {
+        grid-template-columns: 1fr;
+        /* Coluna única no card */
+        gap: 1rem;
+    }
+
+    .nucleo-actions {
+        border-top: 1px solid #eee;
+        padding-top: 1rem;
+    }
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.inventory-list {
+    list-style: none;
+    padding: 0;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.inventory-item:last-child {
+    border-bottom: none;
+}
+
+.item-name {
+    font-weight: 600;
+}
+
+.item-quantity {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-secundaria);
+}
+
+   .presenca-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--cor-fundo-card);
+            box-shadow: var(--sombra-card);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .presenca-table th, .presenca-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .presenca-table th {
+            background-color: #f0f4f8;
+            font-weight: 600;
+            color: var(--cor-primaria);
+        }
+        .aluno-falta-risco td {
+            background-color: #fff3cd; /* Fundo leve para o alerta de 3 faltas */
+        }
+        .justificativa-input {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }

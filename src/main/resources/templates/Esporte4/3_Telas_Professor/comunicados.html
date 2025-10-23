@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicados | Esporte 4.0</title>
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="presenca.html">Presença</a></li>
+                    <li><a href="materiais.html">Materiais</a></li>
+                    <li><a href="comunicados.html" class="active">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Comunicação com Alunos e Turmas</h1>
+
+            <section class="filters" style="margin-bottom: 3rem; padding: 1.5rem; border: none;">
+                <h3><span class="material-icons-outlined">send</span> Enviar Novo Comunicado</h3>
+                <form>
+                    <div class="filter-group">
+                        <label for="destinatario">Enviar para:</label>
+                        <select id="destinatario" name="destinatario">
+                            <option value="todos">Todas as Minhas Turmas</option>
+                            <option value="futebol">Futebol - Categoria Sub-10</option>
+                            <option value="volei">Vôlei - Categoria Sub-15</option>
+                            <option value="aluno_especifico">Aluno Específico...</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="titulo">Título do Comunicado</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Treino Cancelado ou Aviso Importante">
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="mensagem">Conteúdo da Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva o comunicado detalhadamente..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <span class="material-icons-outlined" style="vertical-align: middle;">forward_to_inbox</span> Enviar Comunicado
+                    </button>
+                </form>
+            </section>
+
+            <section>
+                <h2 style="text-align: left; margin-bottom: 1rem; color: var(--cor-primaria);">Histórico de Envio</h2>
+                <div class="results-list">
+                    
+                    <article class="nucleo-card" style="grid-template-columns: 1fr auto;">
+                        <div class="nucleo-info">
+                            <h3 style="font-size: 1.2rem;">AVISO: Cancelamento do Treino de Quarta</h3>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Todas as Turmas</p>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 22/10/2025 às 15:30</p>
+                        </div>
+                        <div class="nucleo-actions" style="text-align: right; border-top: none;">
+                            <p class="vagas-info abertas">Status: Enviado</p>
+                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
+                        </div>
+                    </article>
+
+                    <article class="nucleo-card" style="grid-template-columns: 1fr auto;">
+                        <div class="nucleo-info">
+                            <h3 style="font-size: 1.2rem;">Lembrete: Torneio Interno Próxima Semana</h3>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Futebol - Categoria Sub-10</p>
+                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 15/10/2025 às 08:00</p>
+                        </div>
+                        <div class="nucleo-actions" style="text-align: right; border-top: none;">
+                            <p class="vagas-info abertas">Status: Enviado</p>
+                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

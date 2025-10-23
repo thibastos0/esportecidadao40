@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Materiais | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="presenca.html">Presença</a></li>
+                    <li><a href="materiais.html" class="active">Materiais</a></li>
+                    <li><a href="comunicados.html">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Controle de Materiais - Núcleo Centro Cívico</h1>
+            <p style="margin-bottom: 2rem;">Gerencie o inventário e registre o uso dos equipamentos esportivos.</p>
+            
+            <div class="materials-grid">
+                <section class="filters" style="padding: 1.5rem; border: none;">
+                    <h3><span class="material-icons-outlined">inventory</span> Inventário Atual</h3>
+                    <ul class="inventory-list">
+                        <li class="inventory-item">
+                            <span class="item-name">Bolas de Futebol (T5)</span>
+                            <span class="item-quantity">12</span>
+                        </li>
+                        <li class="inventory-item">
+                            <span class="item-name">Cones Demarcadores</span>
+                            <span class="item-quantity">30</span>
+                        </li>
+                        <li class="inventory-item">
+                            <span class="item-name">Coletes de Treino</span>
+                            <span class="item-quantity">25</span>
+                        </li>
+                        <li class="inventory-item">
+                            <span class="item-name">Bomba de Encher</span>
+                            <span class="item-quantity">1</span>
+                        </li>
+                        <li class="inventory-item" style="background-color: #fef9e7;">
+                            <span class="item-name" style="color: #d9534f;">**Rede de Vôlei**</span>
+                            <span class="item-quantity" style="color: #d9534f;">**0**</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%;">Solicitar Reposição (Opcional)</a>
+                </section>
+
+                <section class="filters" style="padding: 1.5rem; border: none;">
+                    <h3><span class="material-icons-outlined">checklist</span> Registro de Uso Diário</h3>
+                    <p style="margin-bottom: 1rem; font-size: 0.9rem;">Registre a quantidade de itens *utilizados* no dia de hoje (ex: 3 bolas, 2 cones).</p>
+                    <form>
+                        <div class="filter-group">
+                            <label for="material">Material Utilizado</label>
+                            <select id="material" name="material">
+                                <option value="">Selecione o Item</option>
+                                <option value="bola">Bolas de Futebol (T5)</option>
+                                <option value="cone">Cones Demarcadores</option>
+                                <option value="colete">Coletes de Treino</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label for="quantidade">Quantidade Utilizada</label>
+                            <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                            <span class="material-icons-outlined" style="vertical-align: middle;">add_task</span> Registrar Uso
+                        </button>
+                    </form>
+                </section>
+
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

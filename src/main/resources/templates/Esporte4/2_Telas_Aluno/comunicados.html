@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Comunicados - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar (consistent with public pages) -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+                <div class="mobile-user-greeting d-lg-none me-2">
+                    <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="alunoNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/inscricao">Inscrição</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/turma">Minha Turma</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/aluno/comunicados">Comunicados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
+                    </ul>
+                    <div class="auth-area desktop-user-greeting">
+                        <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
+                        <a href="/logout" class="btn-auth outline">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title">Central de Comunicados</h1>
+
+<div class="card">
+    <h3 class="card-title">Filtrar Avisos</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+        <div class="form-group">
+            <label for="filtro_tipo">Tipo</label>
+            <select id="filtro_tipo">
+                <option value="todos">Todos</option>
+                <option value="geral">Geral (Secretaria)</option>
+                <option value="nucleo">Meu Núcleo</option>
+                <option value="turma">Minha Turma</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="filtro_data">Data</label>
+            <select id="filtro_data">
+                <option value="">Mais recentes</option>
+                <option value="">Mais antigos</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Todos os Avisos</h3>
+    </div>
+    <div class="card-content">
+        
+        <div class="comunicado-item">
+            <div class="comunicado-meta">
+                <span class="badge badge-danger">Minha Turma</span>
+                <span>Enviado por: Prof. Carlos Alberto</span>
+                <span>Data: 21/10/2025</span>
+            </div>
+            <h4>Aula de Sábado (25/10) cancelada</h4>
+            <p>Pessoal, devido à chuva, o campo está impraticável. A aula de reposição de sábado está cancelada.</p>
+        </div>
+
+        <div class="comunicado-item">
+            <div class="comunicado-meta">
+                <span class="badge badge-info">Geral</span>
+                <span>Enviado por: Gestor Geral</span>
+                <span>Data: 20/10/2025</span>
+            </div>
+            <h4>Início das inscrições para Natação</h4>
+            <p>As inscrições para as turmas de natação do próximo semestre começam dia 01/11.</p>
+        </div>
+
+        <div class="comunicado-item">
+            <div class="comunicado-meta">
+                <span class="badge badge-warning">Meu Núcleo</span>
+                <span>Enviado por: Gestor (Centro Cívico)</span>
+                <span>Data: 19/10/2025</span>
+            </div>
+            <h4>Uso obrigatório de garrafa de água individual</h4>
+            <p>Para evitar problemas de saúde, solicitamos que todos os alunos tragam sua própria garrafa de água.</p>
+        </div>
+
+        </div>
+    </div>    
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+    <script src="/esporte4/js/main-aluno.js"></script>
+</body>
+</html>

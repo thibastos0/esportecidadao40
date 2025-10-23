@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Minha Turma - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style-aluno.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar (consistent with public pages) -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-layout container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm esporte-navbar">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+                <div class="mobile-user-greeting d-lg-none me-2">
+                    <span class="user-name" th:text="${session.usuario != null ? session.usuario : 'Aluno'}">Aluno</span>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#alunoNavbar" aria-controls="alunoNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="alunoNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/aluno/dashboard">Painel</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/inscricao">Inscrição</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/aluno/turma">Minha Turma</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/comunicados">Comunicados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/aluno/perfil">Meu Perfil</a></li>
+                    </ul>
+                    <div class="auth-area desktop-user-greeting">
+                        <span class="me-3">Olá, <strong th:text="${session.usuario != null ? 'Aluno' : 'Visitante'}">Aluno</strong></span>
+                        <a href="/logout" class="btn-auth outline">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title">Minha Turma: Futebol Sub-12</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Detalhes da Turma</h3>
+    </div>
+    <div class="card-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <p><strong>Professor:</strong> Carlos Alberto</p>
+        <p><strong>Núcleo:</strong> Ginásio Centro Cívico</p>
+        <p><strong>Horário:</strong> Segundas e Quartas, 16:00 - 17:00</p>
+        <p><strong>Matrícula:</strong> <span class="badge badge-success">Ativa</span></p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Histórico de Aulas e Presença</h3>
+    </div>
+    <div class="card-content">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Tópico da Aula</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20/10/2025</td>
+                    <td>Treino de finalização e chute a gol.</td>
+                    <td><span class="badge badge-success">Presente</span></td>
+                </tr>
+                <tr>
+                    <td>18/10/2025</td>
+                    <td>Fundamentos de passe e domínio.</td>
+                    <td><span class="badge badge-success">Presente</span></td>
+                </tr>
+                <tr>
+                    <td>15/10/2025</td>
+                    <td>Jogo coletivo (Tática).</td>
+                    <td><span class="badge badge-danger">Falta</span></td>
+                </tr>
+                <tr>
+                    <td>13/10/2025</td>
+                    <td>Aquecimento e circuito físico.</td>
+                    <td><span class="badge badge-warning">Falta Justificada</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>    
+
+</body>
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main-aluno.js"></script>
+</html>
+</body>
+</html>
+            </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+    <script src="/esporte4/js/main-aluno.js"></script>
+</body>
+</html>

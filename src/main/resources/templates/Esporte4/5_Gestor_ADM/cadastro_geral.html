@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Geral - ADM | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            transition: color 0.3s, border-bottom 0.3s;
+        }
+        .tab-button.active {
+            color: var(--cor-primaria);
+            border-bottom: 3px solid var(--cor-primaria);
+        }
+        .tab-content {
+            display: none;
+            background-color: var(--cor-fundo-card);
+            padding: 20px;
+            border-radius: 0 8px 8px 8px;
+            box-shadow: var(--sombra-card);
+            margin-bottom: 3rem;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_central.html">Dashboard</a></li>
+                    <li><a href="cadastro_geral.html" class="active">Cadastro Geral</a></li>
+                    <li><a href="gestao_usuarios.html">Usuários</a></li>
+                    <li><a href="relatorios_exportacoes.html">Relatórios</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Cadastro Geral do Sistema</h1>
+            
+            <div class="tabs">
+                <button class="tab-button active" data-tab="nucleos"><span class="material-icons-outlined">location_city</span> Núcleos</button>
+                <button class="tab-button" data-tab="professores"><span class="material-icons-outlined">person_pin</span> Professores</button>
+                <button class="tab-button" data-tab="modalidades"><span class="material-icons-outlined">sports_soccer</span> Modalidades/Turmas</button>
+            </div>
+
+            <div id="nucleos" class="tab-content active">
+                <h2>Cadastro de Núcleos</h2>
+                <form>
+                    <div class="filter-group">
+                        <label for="nome_nucleo">Nome do Núcleo</label>
+                        <input type="text" id="nome_nucleo" placeholder="Ex: Ginásio Municipal Centro Cívico">
+                    </div>
+                    <div class="filter-group">
+                        <label for="endereco_nucleo">Endereço Completo</label>
+                        <input type="text" id="endereco_nucleo" placeholder="Ex: Rua Tal, nº 123 - Bairro">
+                    </div>
+                    <div class="filter-group">
+                        <label for="gestor_local">Gestor Local Responsável</label>
+                        <select id="gestor_local">
+                            <option value="">Selecione o Gestor (Matrícula)</option>
+                            <option value="gestor1">João da Silva (Mat. 12345)</option>
+                            <option value="gestor2">Maria Luiza (Mat. 54321)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="acessibilidade">Nível de Acessibilidade</label>
+                        <select id="acessibilidade">
+                            <option value="total">Acessibilidade Total</option>
+                            <option value="parcial">Acessibilidade Parcial</option>
+                            <option value="inexistente">Acessibilidade Inexistente</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar Núcleo</button>
+                </form>
+            </div>
+
+            <div id="professores" class="tab-content">
+                <h2>Cadastro de Professores</h2>
+                <form>
+                    <div class="filter-group">
+                        <label for="nome_professor">Nome Completo</label>
+                        <input type="text" id="nome_professor" placeholder="Ex: Carlos Alberto da Silva">
+                    </div>
+                    <div class="filter-group">
+                        <label for="cpf_professor">CPF</label>
+                        <input type="text" id="cpf_professor" placeholder="000.000.000-00">
+                    </div>
+                    <div class="filter-group">
+                        <label for="nucleo_vinculo">Vínculo com Núcleo</label>
+                        <select id="nucleo_vinculo">
+                            <option value="">Selecione o Núcleo Principal</option>
+                            <option value="centro">Núcleo Centro Cívico</option>
+                            <option value="morada">Ginásio Municipal Jd. Morada do Sol</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar Professor</button>
+                </form>
+            </div>
+
+            <div id="modalidades" class="tab-content">
+                <h2>Cadastro de Turmas</h2>
+                <form>
+                    <div class="filter-group">
+                        <label for="nucleo_turma">Núcleo</label>
+                        <select id="nucleo_turma">
+                            <option value="centro">Núcleo Centro Cívico</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="modalidade">Modalidade</label>
+                        <select id="modalidade">
+                            <option value="futebol">Futebol</option>
+                            <option value="volei">Vôlei</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="professor_turma">Professor Responsável</label>
+                        <select id="professor_turma">
+                            <option value="carlos">Prof. Carlos Alberto</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="display: flex; gap: 20px;">
+                        <div>
+                            <label for="horario">Horário (Ex: 09h00)</label>
+                            <input type="text" id="horario" placeholder="Ex: Seg/Qua, 09:00 - 10:00">
+                        </div>
+                        <div>
+                            <label for="limite_alunos">Limite de Alunos</label>
+                            <input type="number" id="limite_alunos" min="1" value="25">
+                        </div>
+                        <div>
+                            <label for="idade_minima">Idade Mínima</label>
+                            <input type="number" id="idade_minima" min="5" value="7">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar Turma</button>
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão ADM</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+    <script>
+        // Lógica simples para troca de abas
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabs = document.querySelectorAll(".tab-button");
+            const contents = document.querySelectorAll(".tab-content");
+
+            tabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    // Remove active de todos os botões e conteúdos
+                    tabs.forEach(t => t.classList.remove("active"));
+                    contents.forEach(c => c.classList.remove("active"));
+
+                    // Adiciona active ao botão clicado
+                    tab.classList.add("active");
+
+                    // Mostra o conteúdo correspondente
+                    const targetId = tab.getAttribute("data-tab");
+                    document.getElementById(targetId).classList.add("active");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gestor | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_nucleo.html" class="active">Dashboard</a></li>
+                    <li><a href="gestao_materiais.html">Materiais</a></li>
+                    <li><a href="gestao_quadras.html">Quadras</a></li>
+                    <li><a href="comunicados_nucleo.html">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Dashboard do Núcleo: Centro Cívico</h1>
+            <p style="margin-bottom: 2rem;">Visão geral e desempenho operacional do núcleo.</p>
+
+            <section class="highlights" style="padding: 0; margin-bottom: 3rem;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Métricas Chave</h2>
+                <div class="highlights-grid dashboard-grid">
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">school</span>
+                        <h3>Alunos Matriculados</h3>
+                        <p style="font-size: 2rem; font-weight: 700;">185</p>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">class</span>
+                        <h3>Total de Turmas</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--cor-secundaria);">8</p>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">show_chart</span>
+                        <h3>Frequência Média</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: var(--cor-primaria);">87.4%</p>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="material-icons-outlined icon">inventory_2</span>
+                        <h3>Itens em Estoque Baixo</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #d9534f;">3</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section style="margin-bottom: 3rem;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Ocupação de Vagas por Modalidade</h2>
+                <div class="chart-container">
+                    <canvas id="vagasChart" height="120"></canvas>
+                </div>
+            </section>
+
+            <section class="contact-section" style="padding: 0;">
+                <h2 style="text-align: left; margin-bottom: 1rem;">Ações de Gestão</h2>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <a href="gestao_materiais.html" class="btn btn-secondary" style="max-width: none; margin: 0;">
+                        <span class="material-icons-outlined">add_business</span> Gerenciar Estoque
+                    </a>
+                    <a href="gestao_quadras.html" class="btn btn-secondary" style="max-width: none; margin: 0;">
+                        <span class="material-icons-outlined">calendar_today</span> Agendar Quadras
+                    </a>
+                    <a href="comunicados_nucleo.html" class="btn btn-govbr" style="max-width: none; margin: 0;">
+                        <span class="material-icons-outlined">campaign</span> Enviar Aviso Geral
+                    </a>
+                </div>
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão Local</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+    <script>
+        // Script para inicializar o gráfico de ocupação de vagas
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('vagasChart').getContext('2d');
+            const vagasChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Futebol', 'Vôlei', 'Natação', 'Basquete'],
+                    datasets: [{
+                        label: 'Vagas Ocupadas',
+                        data: [55, 30, 40, 25],
+                        backgroundColor: 'var(--cor-primaria)',
+                    },
+                    {
+                        label: 'Vagas Livres',
+                        data: [5, 10, 0, 15],
+                        backgroundColor: 'var(--cor-secundaria)',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { stacked: true },
+                        y: { stacked: true, beginAtZero: true }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

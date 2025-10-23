@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Explorar Núcleos - Plataforma Esporte 4.0</title>
+        <!-- Bootstrap CSS (WebJars) -->
+        <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/esporte4/css/style.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+        <!-- Top brand bar (crest + title) -->
+        <div class="brand-top">
+            <div class="container">
+                <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+                <div class="brand-text">
+                    <strong>SECRETARIA MUNICIPAL</strong>
+                    <small>DE ESPORTES</small>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+                                <li class="nav-item"><a class="nav-link active" href="/explorar">Explorar Núcleos</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/login">Dúvidas</a></li>
+                            </ul>
+                    <div class="d-flex">
+                        <a href="/login" class="btn btn-primary">Entrar</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="container py-5">
+                <div class="row">
+                    <!-- Filters column -->
+                    <aside class="col-lg-4 mb-4">
+                        <div class="card p-3">
+                            <h5 class="mb-3"><span class="material-icons-outlined">filter_alt</span> Filtros</h5>
+                            <div class="mb-3">
+                                <label class="form-label" for="modalidade">Modalidade</label>
+                                <select id="modalidade" name="modalidade" class="form-select">
+                                    <option value="">Todas</option>
+                                    <option value="futebol">Futebol</option>
+                                    <option value="volei">Vôlei</option>
+                                    <option value="natacao">Natação</option>
+                                    <option value="judo">Judô</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="bairro">Bairro ou Endereço</label>
+                                <input type="text" id="bairro" name="bairro" class="form-control" placeholder="Digite o nome do bairro">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="faixa_etaria">Faixa Etária</label>
+                                <select id="faixa_etaria" name="faixa_etaria" class="form-select">
+                                    <option value="">Todas</option>
+                                    <option value="infantil">Infantil (6-10 anos)</option>
+                                    <option value="juvenil">Juvenil (11-17 anos)</option>
+                                    <option value="adulto">Adulto (18+)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Turno</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="manha" id="t_man">
+                                    <label class="form-check-label" for="t_man">Manhã</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="tarde" id="t_tar">
+                                    <label class="form-check-label" for="t_tar">Tarde</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="noite" id="t_noi">
+                                    <label class="form-check-label" for="t_noi">Noite</label>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- Results column -->
+                    <section class="col-lg-8">
+                        <h2 class="mb-3">Encontre seu Núcleo</h2>
+                        <div id="map-container" class="mb-4" style="height: 380px;">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117503.7329587425!2d-46.7259111367098!3d-23.54923330693994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59a68a5f36e3%3A0x6b432f22b3c10!2sPrefeitura%20de%20S%C3%A3o%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1678886000000" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade" class="w-100 h-100 border-0">
+                            </iframe>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="card p-3 nucleo-card d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h5 class="mb-1">Núcleo Centro Cívico</h5>
+                                        <p class="mb-0"><span class="material-icons-outlined icon">place</span> Av. Eng. Fábio Roberto Barnabé, 365</p>
+                                        <p class="mb-0"><span class="material-icons-outlined icon">person</span> Prof. Carlos Alberto</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="fw-bold text-success mb-2">Vagas Abertas</p>
+                                        <a href="/login" class="btn btn-secondary">Inscrever-se</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="card p-3 nucleo-card d-flex align-items-center justify-content-between">
+                                    <div>
+                                        <h5 class="mb-1">Ginásio Municipal Jd. Morada do Sol</h5>
+                                        <p class="mb-0"><span class="material-icons-outlined icon">place</span> R. Ricardo Bergamini, 230</p>
+                                        <p class="mb-0"><span class="material-icons-outlined icon">person</span> Profa. Maria Luiza</p>
+                                    </div>
+                                    <div class="text-end">
+                                        <p class="fw-bold text-danger mb-2">Vagas Esgotadas</p>
+                                        <button class="btn btn-secondary" disabled>Lista de Espera</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <div class="container text-center">
+                <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+                <p>&copy; 2025. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+
+        <!-- Bootstrap JS bundle (WebJars) -->
+        <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+    </body>
+    </html>
+</body>
+</html>

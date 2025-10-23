@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Usuários - ADM | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <style>
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--cor-fundo-card);
+            box-shadow: var(--sombra-card);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .users-table th, .users-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .users-table th {
+            background-color: #f0f4f8;
+            font-weight: 600;
+            color: var(--cor-primaria);
+        }
+        .users-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        .permissao-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+        }
+        .permissao-aluno { background-color: var(--cor-secundaria); }
+        .permissao-professor { background-color: var(--cor-destaque); }
+        .permissao-gestor-local { background-color: var(--cor-primaria); }
+        .permissao-adm { background-color: #d9534f; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_central.html">Dashboard</a></li>
+                    <li><a href="cadastro_geral.html">Cadastro Geral</a></li>
+                    <li><a href="gestao_usuarios.html" class="active">Usuários</a></li>
+                    <li><a href="relatorios_exportacoes.html">Relatórios</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Gestão de Usuários e Permissões</h1>
+            
+            <section style="margin-bottom: 3rem;">
+                <div class="filter-group" style="display: flex; gap: 15px; margin-bottom: 20px;">
+                    <input type="text" placeholder="Buscar por Nome ou CPF..." style="flex-grow: 1;">
+                    <select style="width: 200px;">
+                        <option value="">Filtrar por Perfil</option>
+                        <option value="adm">Gestor ADM</option>
+                        <option value="local">Gestor Local</option>
+                        <option value="professor">Professor</option>
+                        <option value="aluno">Aluno</option>
+                    </select>
+                    <button class="btn btn-secondary"><span class="material-icons-outlined">search</span> Buscar</button>
+                </div>
+
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF (Login)</th>
+                            <th>Perfil / Permissões</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana Clara de Souza</td>
+                            <td>987.654.321-00</td>
+                            <td><span class="permissao-aluno">Aluno</span></td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 8px 15px;">
+                                    <span class="material-icons-outlined" style="font-size: 18px;">edit</span> Editar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Prof. Carlos Alberto</td>
+                            <td>123.456.789-00</td>
+                            <td><span class="permissao-professor">Professor</span></td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 8px 15px;">
+                                    <span class="material-icons-outlined" style="font-size: 18px;">edit</span> Editar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Maria Luiza (Gestora)</td>
+                            <td>111.222.333-44</td>
+                            <td><span class="permissao-gestor-local">Gestor Local</span></td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 8px 15px;">
+                                    <span class="material-icons-outlined" style="font-size: 18px;">edit</span> Editar
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Administrador Master</td>
+                            <td>000.000.000-00</td>
+                            <td><span class="permissao-adm">Gestor ADM</span></td>
+                            <td>
+                                <button class="btn btn-secondary" style="padding: 8px 15px;">
+                                    <span class="material-icons-outlined" style="font-size: 18px;">edit</span> Editar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="filters" style="padding: 1.5rem; border: none;">
+                <h3 style="color: var(--cor-primaria);">Redefinir Perfil de Acesso</h3>
+                <p style="margin-bottom: 1rem;">Use esta seção para alterar a permissão de um usuário.</p>
+                <form>
+                    <div class="filter-group">
+                        <label for="user_cpf">CPF do Usuário (Para redefinição)</label>
+                        <input type="text" id="user_cpf" placeholder="000.000.000-00">
+                    </div>
+                    <div class="filter-group">
+                        <label for="novo_perfil">Novo Perfil de Acesso</label>
+                        <select id="novo_perfil">
+                            <option value="aluno">Aluno (Padrão)</option>
+                            <option value="professor">Professor</option>
+                            <option value="gestor_local">Gestor Local</option>
+                            <option value="gestor_adm">Gestor ADM</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color: #d9534f;">
+                        <span class="material-icons-outlined">security</span> Redefinir Perfil
+                    </button>
+                </form>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão ADM</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

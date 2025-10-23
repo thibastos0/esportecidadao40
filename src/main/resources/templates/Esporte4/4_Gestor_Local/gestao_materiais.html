@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Materiais - Gestor | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard_nucleo.html">Dashboard</a></li>
+                    <li><a href="gestao_materiais.html" class="active">Materiais</a></li>
+                    <li><a href="gestao_quadras.html">Quadras</a></li>
+                    <li><a href="comunicados_nucleo.html">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Gestão de Materiais do Núcleo</h1>
+            <p style="margin-bottom: 2rem;">Controle de entrada, saída e estoque atual dos equipamentos.</p>
+            
+            <section class="inventory-list-gestao">
+                <h4><span class="material-icons-outlined">inventory_2</span> Estoque Atual</h4>
+                <div class="inventory-item-gestao">
+                    <p style="font-weight: 600;">Item</p>
+                    <p style="font-weight: 600;">Estoque</p>
+                    <p style="font-weight: 600;">Alerta</p>
+                    <p style="font-weight: 600;">Ações</p>
+                </div>
+                
+                <div class="inventory-item-gestao">
+                    <p>Bolas de Futebol (T5)</p>
+                    <p style="font-size: 1.1rem; color: var(--cor-secundaria);">12</p>
+                    <p>OK</p>
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn btn-secondary" style="padding: 5px 10px;" title="Registrar Entrada"><span class="material-icons-outlined" style="font-size: 18px;">add</span></button>
+                        <button class="btn btn-secondary" style="padding: 5px 10px;" title="Registrar Saída/Baixa"><span class="material-icons-outlined" style="font-size: 18px;">remove</span></button>
+                    </div>
+                </div>
+
+                <div class="inventory-item-gestao" style="background-color: #fef9e7;">
+                    <p style="font-weight: 600;">Cones Demarcadores</p>
+                    <p style="font-size: 1.1rem; color: #d9534f;">5</p>
+                    <p style="color: #d9534f; font-weight: 600;">Mínimo (Solicitar Reposição)</p>
+                    <div style="display: flex; gap: 5px;">
+                        <button class="btn btn-secondary" style="padding: 5px 10px;" title="Registrar Entrada"><span class="material-icons-outlined" style="font-size: 18px;">add</span></button>
+                        <button class="btn btn-secondary" style="padding: 5px 10px;" title="Registrar Saída/Baixa"><span class="material-icons-outlined" style="font-size: 18px;">remove</span></button>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="text-align: left; margin-bottom: 1rem;">Histórico de Uso e Baixas</h2>
+                
+                <article class="nucleo-card" style="grid-template-columns: 2fr 1fr auto;">
+                    <div class="nucleo-info">
+                        <h3 style="font-size: 1.1rem;">Uso Diário - 5 Cones</h3>
+                        <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">person</span> **Professor**: Carlos Alberto</p>
+                        <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Data**: 23/10/2025</p>
+                    </div>
+                    <div class="nucleo-actions" style="border-top: none;">
+                        <p class="vagas-info abertas">Tipo: **Saída (Uso)**</p>
+                    </div>
+                    <div class="nucleo-actions" style="border-top: none;">
+                        <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
+                    </div>
+                </article>
+
+                <article class="nucleo-card" style="grid-template-columns: 2fr 1fr auto;">
+                    <div class="nucleo-info">
+                        <h3 style="font-size: 1.1rem;">Entrada de 20 Coletes Novos</h3>
+                        <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">person</span> **Responsável**: Gestor Local</p>
+                        <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Data**: 10/10/2025</p>
+                    </div>
+                    <div class="nucleo-actions" style="border-top: none;">
+                        <p class="vagas-info abertas" style="color: var(--cor-primaria);">Tipo: **Entrada**</p>
+                    </div>
+                    <div class="nucleo-actions" style="border-top: none;">
+                        <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
+                    </div>
+                </article>
+
+            </section>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0 - Gestão Local</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

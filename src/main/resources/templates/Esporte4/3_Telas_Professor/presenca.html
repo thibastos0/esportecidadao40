@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lançamento de Presença | Esporte 4.0</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
+            <nav class="main-nav">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
+                    <span class="material-icons-outlined">menu</span>
+                </button>
+                <ul id="nav-links">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="presenca.html" class="active">Presença</a></li>
+                    <li><a href="materiais.html">Materiais</a></li>
+                    <li><a href="comunicados.html">Comunicados</a></li>
+                    <li><a href="../index.html">Sair</a></li>
+                </ul>
+            </nav>
+            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding: 2rem 0;">
+
+            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Lançamento de Presença</h1>
+            <p style="margin-bottom: 2rem;">Turma: **Futebol - Categoria Sub-10 (Manhã)** | Data: **23/10/2025**</p>
+            
+            <form>
+                <table class="presenca-table">
+                    <thead>
+                        <tr>
+                            <th>Aluno</th>
+                            <th style="width: 100px;">Presente</th>
+                            <th style="width: 150px;">Faltas no Mês</th>
+                            <th>Justificativa da Falta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ana Carolina Silva</td>
+                            <td><input type="checkbox" name="presenca_1" checked style="width: 20px; height: 20px;"></td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+
+                        <tr class="aluno-falta-risco">
+                            <td>**João Pedro Santos** <span class="material-icons-outlined" style="color: #d9534f; font-size: 1.2rem; vertical-align: middle;">priority_high</span> 
+                                <span style="color: #d9534f; font-size: 0.9rem; font-weight: 600;">(Alerta!)</span>
+                            </td>
+                            <td><input type="checkbox" name="presenca_2" style="width: 20px; height: 20px;"></td>
+                            <td>**3**</td>
+                            <td>
+                                <input type="text" name="justificativa_2" class="justificativa-input" placeholder="Justificar falta..." value="">
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Maria Eduarda Oliveira</td>
+                            <td><input type="checkbox" name="presenca_3" style="width: 20px; height: 20px;"></td>
+                            <td>2</td>
+                            <td>
+                                <input type="text" name="justificativa_3" class="justificativa-input" placeholder="Justificar falta..." value="Viagem">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Pedro Henrique Costa</td>
+                            <td><input type="checkbox" name="presenca_4" checked style="width: 20px; height: 20px;"></td>
+                            <td>0</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div style="margin-top: 30px; text-align: right;">
+                    <button type="submit" class="btn btn-primary" style="padding: 15px 30px;">
+                        <span class="material-icons-outlined" style="vertical-align: middle;">save</span> Salvar Presença
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        </div>
+    </footer>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>
