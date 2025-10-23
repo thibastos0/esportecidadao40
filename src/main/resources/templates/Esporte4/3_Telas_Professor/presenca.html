@@ -3,99 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lançamento de Presença | Esporte 4.0</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <title>Lançar Frequência - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
 
-    <header class="main-header">
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
         <div class="container">
-            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
-            <nav class="main-nav">
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
-                    <span class="material-icons-outlined">menu</span>
-                </button>
-                <ul id="nav-links">
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="presenca.html" class="active">Presença</a></li>
-                    <li><a href="materiais.html">Materiais</a></li>
-                    <li><a href="comunicados.html">Comunicados</a></li>
-                    <li><a href="../index.html">Sair</a></li>
-                </ul>
-            </nav>
-            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
         </div>
-    </header>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.professorUsuario != null ? session.professorUsuario : 'Professor'}">Professor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#professorNavbar" aria-controls="professorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="professorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/professor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/turmas">Minhas Turmas</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/professor/frequencia">Frequência</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/comunicados">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/perfil">Meu Perfil</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.professorUsuario != null ? 'Prof. Carlos' : 'Professor'}">Prof. Carlos</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main>
-        <div class="container" style="padding: 2rem 0;">
+        <div class="container py-4">
+            <h1 class="page-title">Lançar Frequência</h1>
 
-            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Lançamento de Presença</h1>
-            <p style="margin-bottom: 2rem;">Turma: **Futebol - Categoria Sub-10 (Manhã)** | Data: **23/10/2025**</p>
-            
-            <form>
-                <table class="presenca-table">
-                    <thead>
-                        <tr>
-                            <th>Aluno</th>
-                            <th style="width: 100px;">Presente</th>
-                            <th style="width: 150px;">Faltas no Mês</th>
-                            <th>Justificativa da Falta</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Ana Carolina Silva</td>
-                            <td><input type="checkbox" name="presenca_1" checked style="width: 20px; height: 20px;"></td>
-                            <td>1</td>
-                            <td></td>
-                        </tr>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">event</span>Selecionar Aula</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="turma" class="form-label">Turma</label>
+                            <select class="form-select" id="turma" name="turma">
+                                <option value="fut12">Futebol Sub-12 (Segunda/Quarta 16:00)</option>
+                                <option value="futsal14">Futsal Sub-14 (Segunda/Quarta 18:00)</option>
+                                <option value="fut16">Futebol Sub-16 (Terça/Quinta 19:00)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="data" class="form-label">Data da Aula</label>
+                            <input type="date" class="form-control" id="data" name="data" value="2025-01-23">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                        <tr class="aluno-falta-risco">
-                            <td>**João Pedro Santos** <span class="material-icons-outlined" style="color: #d9534f; font-size: 1.2rem; vertical-align: middle;">priority_high</span> 
-                                <span style="color: #d9534f; font-size: 0.9rem; font-weight: 600;">(Alerta!)</span>
-                            </td>
-                            <td><input type="checkbox" name="presenca_2" style="width: 20px; height: 20px;"></td>
-                            <td>**3**</td>
-                            <td>
-                                <input type="text" name="justificativa_2" class="justificativa-input" placeholder="Justificar falta..." value="">
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Maria Eduarda Oliveira</td>
-                            <td><input type="checkbox" name="presenca_3" style="width: 20px; height: 20px;"></td>
-                            <td>2</td>
-                            <td>
-                                <input type="text" name="justificativa_3" class="justificativa-input" placeholder="Justificar falta..." value="Viagem">
-                            </td>
-                        </tr>
+            <form method="post" action="/professor/frequencia/salvar">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 class="card-title mb-0"><span class="material-icons-outlined me-2 align-middle">fact_check</span>Lista de Presença</h3>
+                        <div>
+                            <span class="badge badge-info">18 alunos</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info mb-4">
+                            <strong><span class="material-icons-outlined icon-inline">info</span>Orientação:</strong> 
+                            Marque os alunos <strong>presentes</strong>. Alunos com 3+ faltas recebem alerta automático.
+                        </div>
 
-                        <tr>
-                            <td>Pedro Henrique Costa</td>
-                            <td><input type="checkbox" name="presenca_4" checked style="width: 20px; height: 20px;"></td>
-                            <td>0</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div style="margin-top: 30px; text-align: right;">
-                    <button type="submit" class="btn btn-primary" style="padding: 15px 30px;">
-                        <span class="material-icons-outlined" style="vertical-align: middle;">save</span> Salvar Presença
-                    </button>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Aluno</th>
+                                        <th class="text-center" style="width: 120px;">Presente</th>
+                                        <th class="text-center" style="width: 120px;">Faltas no Mês</th>
+                                        <th style="width: 300px;">Justificativa (opcional)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ana Carolina Silva</td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="1" id="p1" checked>
+                                                <label class="form-check-label" for="p1"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">1</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Opcional">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carlos Eduardo Pereira</td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="2" id="p2" checked>
+                                                <label class="form-check-label" for="p2"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">0</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Opcional">
+                                        </td>
+                                    </tr>
+                                    <tr class="table-warning">
+                                        <td>
+                                            <strong>João Pedro Santos</strong>
+                                            <span class="material-icons-outlined icon-inline text-warning">warning</span>
+                                            <span class="badge badge-warning">Alerta</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="3" id="p3">
+                                                <label class="form-check-label" for="p3"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center"><strong class="text-danger">3</strong></td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Justificar falta">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lucas Silva Santos</td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="4" id="p4" checked>
+                                                <label class="form-check-label" for="p4"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">1</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Opcional">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maria Eduarda Oliveira</td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="5" id="p5">
+                                                <label class="form-check-label" for="p5"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">2</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Justificar falta" value="Viagem">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pedro Henrique Costa</td>
+                                        <td class="text-center">
+                                            <div class="form-check d-inline-block">
+                                                <input class="form-check-input" type="checkbox" name="presente[]" value="6" id="p6" checked>
+                                                <label class="form-check-label" for="p6"></label>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">0</td>
+                                        <td>
+                                            <input type="text" class="form-control form-control-sm" name="justificativa[]" placeholder="Opcional">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer text-end">
+                        <a href="/professor/dashboard" class="btn btn-secondary me-2">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="material-icons-outlined icon-inline">save</span>Salvar Frequência
+                        </button>
+                    </div>
                 </div>
             </form>
-            
         </div>
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="/esporte4/js/main.js"></script>
 </body>
 </html>

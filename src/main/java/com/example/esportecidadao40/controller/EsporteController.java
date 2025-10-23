@@ -29,6 +29,13 @@ public class EsporteController {
         return "redirect:/aluno/dashboard";
     }
 
+    // Simulated login for professor: sets professorUsuario and redirects to professor dashboard
+    @GetMapping("/do-login-professor")
+    public String doLoginProfessor(HttpSession session) {
+        session.setAttribute("professorUsuario", "prof-simulado");
+        return "redirect:/professor/dashboard";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
@@ -74,6 +81,55 @@ public class EsporteController {
             return "redirect:/login";
         }
         return "Esporte4/2_Telas_Aluno/perfil";
+    }
+
+    // Area do professor (session check with professorUsuario)
+    @GetMapping("/professor/dashboard")
+    public String professorDashboard(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/dashboard";
+    }
+
+    @GetMapping("/professor/turmas")
+    public String professorTurmas(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/turmas";
+    }
+
+    @GetMapping("/professor/frequencia")
+    public String professorFrequencia(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/presenca";
+    }
+
+    @GetMapping("/professor/materiais")
+    public String professorMateriais(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/materiais";
+    }
+
+    @GetMapping("/professor/comunicados")
+    public String professorComunicados(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/comunicados";
+    }
+
+    @GetMapping("/professor/perfil")
+    public String professorPerfil(HttpSession session) {
+        if (session.getAttribute("professorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/3_Telas_Professor/perfil";
     }
 
 }

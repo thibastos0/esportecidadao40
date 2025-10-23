@@ -3,104 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunicados | Esporte 4.0</title>
+    
+    <title>Comunicados - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/esporte4/css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
 
-    <header class="main-header">
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
         <div class="container">
-            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
-            <nav class="main-nav">
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
-                    <span class="material-icons-outlined">menu</span>
-                </button>
-                <ul id="nav-links">
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="presenca.html">Presença</a></li>
-                    <li><a href="materiais.html">Materiais</a></li>
-                    <li><a href="comunicados.html" class="active">Comunicados</a></li>
-                    <li><a href="../index.html">Sair</a></li>
-                </ul>
-            </nav>
-            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
         </div>
-    </header>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.professorUsuario != null ? session.professorUsuario : 'Professor'}">Professor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#professorNavbar" aria-controls="professorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="professorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/professor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/turmas">Minhas Turmas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/frequencia">Frequência</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/materiais">Materiais</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/professor/comunicados">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/perfil">Meu Perfil</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.professorUsuario != null ? 'Prof. Carlos' : 'Professor'}">Prof. Carlos</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main>
-        <div class="container" style="padding: 2rem 0;">
+        <div class="container py-4">
+            <h1 class="page-title">Comunicados</h1>
 
-            <h1 style="color: var(--cor-primaria); margin-bottom: 2rem;">Comunicação com Alunos e Turmas</h1>
-
-            <section class="filters" style="margin-bottom: 3rem; padding: 1.5rem; border: none;">
-                <h3><span class="material-icons-outlined">send</span> Enviar Novo Comunicado</h3>
-                <form>
-                    <div class="filter-group">
-                        <label for="destinatario">Enviar para:</label>
-                        <select id="destinatario" name="destinatario">
-                            <option value="todos">Todas as Minhas Turmas</option>
-                            <option value="futebol">Futebol - Categoria Sub-10</option>
-                            <option value="volei">Vôlei - Categoria Sub-15</option>
-                            <option value="aluno_especifico">Aluno Específico...</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label for="titulo">Título do Comunicado</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Ex: Treino Cancelado ou Aviso Importante">
-                    </div>
-
-                    <div class="filter-group">
-                        <label for="mensagem">Conteúdo da Mensagem</label>
-                        <textarea id="mensagem" name="mensagem" rows="5" placeholder="Descreva o comunicado detalhadamente..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span class="material-icons-outlined" style="vertical-align: middle;">forward_to_inbox</span> Enviar Comunicado
-                    </button>
-                </form>
-            </section>
-
-            <section>
-                <h2 style="text-align: left; margin-bottom: 1rem; color: var(--cor-primaria);">Histórico de Envio</h2>
-                <div class="results-list">
-                    
-                    <article class="nucleo-card" style="grid-template-columns: 1fr auto;">
-                        <div class="nucleo-info">
-                            <h3 style="font-size: 1.2rem;">AVISO: Cancelamento do Treino de Quarta</h3>
-                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Todas as Turmas</p>
-                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 22/10/2025 às 15:30</p>
-                        </div>
-                        <div class="nucleo-actions" style="text-align: right; border-top: none;">
-                            <p class="vagas-info abertas">Status: Enviado</p>
-                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
-                        </div>
-                    </article>
-
-                    <article class="nucleo-card" style="grid-template-columns: 1fr auto;">
-                        <div class="nucleo-info">
-                            <h3 style="font-size: 1.2rem;">Lembrete: Torneio Interno Próxima Semana</h3>
-                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">group</span> **Para**: Futebol - Categoria Sub-10</p>
-                            <p style="font-size: 0.9rem;"><span class="material-icons-outlined icon">schedule</span> **Enviado em**: 15/10/2025 às 08:00</p>
-                        </div>
-                        <div class="nucleo-actions" style="text-align: right; border-top: none;">
-                            <p class="vagas-info abertas">Status: Enviado</p>
-                            <a href="#" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 15px;">Detalhes</a>
-                        </div>
-                    </article>
-
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">send</span>Enviar Novo Comunicado</h3>
                 </div>
-            </section>
-            
+                <div class="card-body">
+                    <form method="post" action="/professor/comunicados/enviar">
+                        <div class="mb-3">
+                            <label for="destinatario" class="form-label">Enviar para</label>
+                            <select class="form-select" id="destinatario" name="destinatario" required>
+                                <option value="">Selecione o destinatário...</option>
+                                <option value="todos">Todas as Minhas Turmas</option>
+                                <option value="fut12">Futebol Sub-12</option>
+                                <option value="futsal14">Futsal Sub-14</option>
+                                <option value="fut16">Futebol Sub-16</option>
+                                <option value="aluno_especifico">Aluno Específico...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="titulo" class="form-label">Título do Comunicado</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ex: Treino Cancelado, Aviso Importante" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label">Conteúdo da Mensagem</label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" placeholder="Descreva o comunicado detalhadamente..." required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="urgente" name="urgente">
+                                <label class="form-check-label" for="urgente">
+                                    <span class="material-icons-outlined icon-inline text-danger">priority_high</span>
+                                    Marcar como urgente
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <span class="material-icons-outlined icon-inline">forward_to_inbox</span>
+                            Enviar Comunicado
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history</span>Histórico de Envio</h3>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item px-0">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">
+                                        <span class="material-icons-outlined icon-inline text-danger">priority_high</span>
+                                        AVISO: Cancelamento do Treino de Quarta
+                                    </h5>
+                                    <p class="mb-1 text-muted">
+                                        <span class="material-icons-outlined icon-inline">group</span>
+                                        <strong>Para:</strong> Todas as Turmas
+                                    </p>
+                                    <small class="text-muted">
+                                        <span class="material-icons-outlined icon-inline">schedule</span>
+                                        Enviado em 22/01/2025 às 15:30
+                                    </small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge badge-success mb-2">Enviado</span>
+                                    <button class="btn btn-sm btn-outline-secondary d-block">Ver Detalhes</button>
+                                </div>
+                            </div>
+                            <p class="mb-0 text-muted small">Devido às condições climáticas adversas, o treino de quarta-feira está cancelado...</p>
+                        </div>
+
+                        <div class="list-group-item px-0">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Lembrete: Torneio Interno Próxima Semana</h5>
+                                    <p class="mb-1 text-muted">
+                                        <span class="material-icons-outlined icon-inline">group</span>
+                                        <strong>Para:</strong> Futebol Sub-12
+                                    </p>
+                                    <small class="text-muted">
+                                        <span class="material-icons-outlined icon-inline">schedule</span>
+                                        Enviado em 15/01/2025 às 08:00
+                                    </small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge badge-success mb-2">Enviado</span>
+                                    <button class="btn btn-sm btn-outline-secondary d-block">Ver Detalhes</button>
+                                </div>
+                            </div>
+                            <p class="mb-0 text-muted small">Participação no torneio interno agendado para dia 30/01. Comparecer uniformizados...</p>
+                        </div>
+
+                        <div class="list-group-item px-0">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Material Esportivo - Novos Equipamentos</h5>
+                                    <p class="mb-1 text-muted">
+                                        <span class="material-icons-outlined icon-inline">group</span>
+                                        <strong>Para:</strong> Todas as Turmas
+                                    </p>
+                                    <small class="text-muted">
+                                        <span class="material-icons-outlined icon-inline">schedule</span>
+                                        Enviado em 10/01/2025 às 14:20
+                                    </small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge badge-success mb-2">Enviado</span>
+                                    <button class="btn btn-sm btn-outline-secondary d-block">Ver Detalhes</button>
+                                </div>
+                            </div>
+                            <p class="mb-0 text-muted small">Chegaram os novos coletes e bolas. A partir de segunda estarão disponíveis...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="/esporte4/js/main.js"></script>
 </body>
 </html>

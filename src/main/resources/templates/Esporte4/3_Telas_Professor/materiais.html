@@ -3,100 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Materiais | Esporte 4.0</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
     
+    <title>Materiais - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
 
-    <header class="main-header">
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
         <div class="container">
-            <a href="../index.html" class="logo">Esporte<span>4.0</span></a>
-            <nav class="main-nav">
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Abrir menu">
-                    <span class="material-icons-outlined">menu</span>
-                </button>
-                <ul id="nav-links">
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="presenca.html">Presença</a></li>
-                    <li><a href="materiais.html" class="active">Materiais</a></li>
-                    <li><a href="comunicados.html">Comunicados</a></li>
-                    <li><a href="../index.html">Sair</a></li>
-                </ul>
-            </nav>
-            <a href="../index.html" class="btn btn-primary btn-login-desktop">Sair</a>
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
         </div>
-    </header>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.professorUsuario != null ? session.professorUsuario : 'Professor'}">Professor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#professorNavbar" aria-controls="professorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="professorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/professor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/turmas">Minhas Turmas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/frequencia">Frequência</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/professor/materiais">Materiais</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/comunicados">Comunicados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/professor/perfil">Meu Perfil</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.professorUsuario != null ? 'Prof. Carlos' : 'Professor'}">Prof. Carlos</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <main>
-        <div class="container" style="padding: 2rem 0;">
+        <div class="container py-4">
+            <h1 class="page-title">Controle de Materiais</h1>
+            <p class="lead">Gerencie o inventário e registre o uso dos equipamentos esportivos</p>
 
-            <h1 style="color: var(--cor-primaria); margin-bottom: 1rem;">Controle de Materiais - Núcleo Centro Cívico</h1>
-            <p style="margin-bottom: 2rem;">Gerencie o inventário e registre o uso dos equipamentos esportivos.</p>
-            
-            <div class="materials-grid">
-                <section class="filters" style="padding: 1.5rem; border: none;">
-                    <h3><span class="material-icons-outlined">inventory</span> Inventário Atual</h3>
-                    <ul class="inventory-list">
-                        <li class="inventory-item">
-                            <span class="item-name">Bolas de Futebol (T5)</span>
-                            <span class="item-quantity">12</span>
-                        </li>
-                        <li class="inventory-item">
-                            <span class="item-name">Cones Demarcadores</span>
-                            <span class="item-quantity">30</span>
-                        </li>
-                        <li class="inventory-item">
-                            <span class="item-name">Coletes de Treino</span>
-                            <span class="item-quantity">25</span>
-                        </li>
-                        <li class="inventory-item">
-                            <span class="item-name">Bomba de Encher</span>
-                            <span class="item-quantity">1</span>
-                        </li>
-                        <li class="inventory-item" style="background-color: #fef9e7;">
-                            <span class="item-name" style="color: #d9534f;">**Rede de Vôlei**</span>
-                            <span class="item-quantity" style="color: #d9534f;">**0**</span>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary" style="margin-top: 15px; width: 100%;">Solicitar Reposição (Opcional)</a>
-                </section>
-
-                <section class="filters" style="padding: 1.5rem; border: none;">
-                    <h3><span class="material-icons-outlined">checklist</span> Registro de Uso Diário</h3>
-                    <p style="margin-bottom: 1rem; font-size: 0.9rem;">Registre a quantidade de itens *utilizados* no dia de hoje (ex: 3 bolas, 2 cones).</p>
-                    <form>
-                        <div class="filter-group">
-                            <label for="material">Material Utilizado</label>
-                            <select id="material" name="material">
-                                <option value="">Selecione o Item</option>
-                                <option value="bola">Bolas de Futebol (T5)</option>
-                                <option value="cone">Cones Demarcadores</option>
-                                <option value="colete">Coletes de Treino</option>
-                            </select>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">inventory</span>Inventário Atual - Centro Cívico</h3>
                         </div>
-                        <div class="filter-group">
-                            <label for="quantidade">Quantidade Utilizada</label>
-                            <input type="number" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5">
+                        <div class="card-body">
+                            <div class="list-group">
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="material-icons-outlined icon-inline text-primary">sports_soccer</span>
+                                        <strong>Bolas de Futebol (T5)</strong>
+                                    </div>
+                                    <span class="badge badge-success">12 unidades</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="material-icons-outlined icon-inline text-primary">flag</span>
+                                        <strong>Cones Demarcadores</strong>
+                                    </div>
+                                    <span class="badge badge-success">30 unidades</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="material-icons-outlined icon-inline text-primary">checkroom</span>
+                                        <strong>Coletes de Treino</strong>
+                                    </div>
+                                    <span class="badge badge-success">25 unidades</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="material-icons-outlined icon-inline text-primary">air</span>
+                                        <strong>Bomba de Encher</strong>
+                                    </div>
+                                    <span class="badge badge-success">1 unidade</span>
+                                </div>
+                                <div class="list-group-item d-flex justify-content-between align-items-center bg-warning bg-opacity-10">
+                                    <div>
+                                        <span class="material-icons-outlined icon-inline text-danger">sports_volleyball</span>
+                                        <strong class="text-danger">Rede de Vôlei</strong>
+                                    </div>
+                                    <span class="badge badge-danger">0 unidades</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary w-100 mt-3">
+                                <span class="material-icons-outlined icon-inline">add_shopping_cart</span>
+                                Solicitar Reposição
+                            </button>
                         </div>
-                        
-                        <button type="submit" class="btn btn-secondary" style="width: 100%;">
-                            <span class="material-icons-outlined" style="vertical-align: middle;">add_task</span> Registrar Uso
-                        </button>
-                    </form>
-                </section>
+                    </div>
+                </div>
 
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">checklist</span>Registrar Uso Diário</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-3">Registre a quantidade de materiais utilizados no treino de hoje.</p>
+                            <form method="post" action="/professor/materiais/registrar">
+                                <div class="mb-3">
+                                    <label for="material" class="form-label">Material Utilizado</label>
+                                    <select class="form-select" id="material" name="material" required>
+                                        <option value="">Selecione o item...</option>
+                                        <option value="bola">Bolas de Futebol (T5)</option>
+                                        <option value="cone">Cones Demarcadores</option>
+                                        <option value="colete">Coletes de Treino</option>
+                                        <option value="bomba">Bomba de Encher</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quantidade" class="form-label">Quantidade Utilizada</label>
+                                    <input type="number" class="form-control" id="quantidade" name="quantidade" min="1" placeholder="Ex: 5" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="observacao" class="form-label">Observações (opcional)</label>
+                                    <textarea class="form-control" id="observacao" name="observacao" rows="2" placeholder="Ex: Bola furada, precisa consertar"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <span class="material-icons-outlined icon-inline">add_task</span>
+                                    Registrar Uso
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history</span>Últimos Registros</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">23/01/2025 16:00</small>
+                                    </div>
+                                    <div>5x Bolas de Futebol</div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">22/01/2025 16:00</small>
+                                    </div>
+                                    <div>10x Cones Demarcadores</div>
+                                    <small class="text-muted">Obs: 2 cones danificados</small>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">20/01/2025 16:00</small>
+                                    </div>
+                                    <div>8x Coletes de Treino</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </main>
 
     <footer class="main-footer">
-        <div class="container">
-            <p>&copy; 2025. Plataforma Esporte 4.0</p>
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="/esporte4/js/main.js"></script>
 </body>
 </html>
