@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Gestão de Núcleos - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorUsuario != null ? session.gestorUsuario : 'Gestor'}">Gestor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorNavbar" aria-controls="gestorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/gestor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorUsuario != null ? 'Gestor Municipal' : 'Gestor'}">Gestor Municipal</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-title mb-0">Gestão de Núcleos</h1>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoNucleoModal">
+                    <span class="material-icons-outlined icon-inline">add_location</span>
+                    Novo Núcleo
+                </button>
+            </div>
+
+            <!-- Cards dos núcleos -->
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Centro Cívico</h3>
+                            <span class="badge badge-success">Ativo</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua XV de Novembro, 1500</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 156</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 5</p>
+                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Vôlei, Basquete</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
+                                    <span class="material-icons-outlined icon-inline">edit</span>
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="material-icons-outlined icon-inline">visibility</span>
+                                    Detalhes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Morada do Sol</h3>
+                            <span class="badge badge-success">Ativo</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Av. Brasil, 850</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 128</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 4</p>
+                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Handebol</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
+                                    <span class="material-icons-outlined icon-inline">edit</span>
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="material-icons-outlined icon-inline">visibility</span>
+                                    Detalhes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Jardim Paulista</h3>
+                            <span class="badge badge-warning">Atenção</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua das Flores, 320</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 98</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 3</p>
+                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Vôlei, Basquete</p>
+                            <div class="alert alert-warning p-2 mb-3">
+                                <small><strong>Frequência baixa:</strong> 78%</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
+                                    <span class="material-icons-outlined icon-inline">edit</span>
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="material-icons-outlined icon-inline">visibility</span>
+                                    Detalhes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Vila Furlan</h3>
+                            <span class="badge badge-success">Ativo</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua Santos Dumont, 1200</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 112</p>
+                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 3</p>
+                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Futsal</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
+                                    <span class="material-icons-outlined icon-inline">edit</span>
+                                    Editar
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <span class="material-icons-outlined icon-inline">visibility</span>
+                                    Detalhes
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

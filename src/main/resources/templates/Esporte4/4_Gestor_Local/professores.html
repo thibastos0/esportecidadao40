@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Gestão de Professores - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorUsuario != null ? session.gestorUsuario : 'Gestor'}">Gestor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorNavbar" aria-controls="gestorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/gestor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorUsuario != null ? 'Gestor Municipal' : 'Gestor'}">Gestor Municipal</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-title mb-0">Gestão de Professores</h1>
+                <button class="btn btn-primary">
+                    <span class="material-icons-outlined icon-inline">person_add</span>
+                    Novo Professor
+                </button>
+            </div>
+
+            <!-- Filtros -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Buscar por nome...">
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select">
+                                <option value="">Filtrar por núcleo...</option>
+                                <option value="centro">Centro Cívico</option>
+                                <option value="morada">Morada do Sol</option>
+                                <option value="jardim">Jardim Paulista</option>
+                                <option value="furlan">Vila Furlan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select">
+                                <option value="">Filtrar por modalidade...</option>
+                                <option value="futebol">Futebol</option>
+                                <option value="volei">Vôlei</option>
+                                <option value="basquete">Basquete</option>
+                                <option value="handebol">Handebol</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lista de professores -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">people</span>24 Professores Cadastrados</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Professor</th>
+                                    <th>CREF</th>
+                                    <th>Núcleo</th>
+                                    <th>Turmas</th>
+                                    <th>Alunos</th>
+                                    <th>Modalidades</th>
+                                    <th class="text-center">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons-outlined text-primary me-2">account_circle</span>
+                                            <div>
+                                                <strong>Carlos Eduardo Silva</strong>
+                                                <br><small class="text-muted">carlos.silva@indaiatuba.sp.gov.br</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>123456-G/SP</td>
+                                    <td>Centro Cívico</td>
+                                    <td class="text-center">3</td>
+                                    <td class="text-center">45</td>
+                                    <td><span class="badge badge-info">Futebol</span> <span class="badge badge-info">Futsal</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons-outlined text-primary me-2">account_circle</span>
+                                            <div>
+                                                <strong>Ana Paula Santos</strong>
+                                                <br><small class="text-muted">ana.santos@indaiatuba.sp.gov.br</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>234567-G/SP</td>
+                                    <td>Centro Cívico</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">32</td>
+                                    <td><span class="badge badge-info">Vôlei</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons-outlined text-primary me-2">account_circle</span>
+                                            <div>
+                                                <strong>Ricardo Oliveira</strong>
+                                                <br><small class="text-muted">ricardo.oliveira@indaiatuba.sp.gov.br</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>345678-G/SP</td>
+                                    <td>Morada do Sol</td>
+                                    <td class="text-center">4</td>
+                                    <td class="text-center">58</td>
+                                    <td><span class="badge badge-info">Futebol</span> <span class="badge badge-info">Handebol</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span class="material-icons-outlined text-primary me-2">account_circle</span>
+                                            <div>
+                                                <strong>Mariana Costa</strong>
+                                                <br><small class="text-muted">mariana.costa@indaiatuba.sp.gov.br</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>456789-G/SP</td>
+                                    <td>Jardim Paulista</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">28</td>
+                                    <td><span class="badge badge-info">Basquete</span></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-sm btn-outline-primary me-1">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
+                                        </button>
+                                        <button class="btn btn-sm btn-outline-secondary">
+                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

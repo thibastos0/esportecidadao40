@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Auditoria e Logs - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorAdmUsuario != null ? session.gestorAdmUsuario : 'Admin'}">Admin</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorAdmNavbar" aria-controls="gestorAdmNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorAdmNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/usuarios">Usuários</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor-adm/auditoria">Auditoria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorAdmUsuario != null ? 'Administrador' : 'Admin'}">Administrador</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-title">Auditoria e Logs do Sistema</h1>
+                <div>
+                    <button class="btn btn-primary me-2">
+                        <span class="material-icons-outlined icon-inline">file_download</span>
+                        Exportar Logs
+                    </button>
+                    <button class="btn btn-outline-secondary">
+                        <span class="material-icons-outlined icon-inline">refresh</span>
+                        Atualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Resumo de Atividades -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: var(--cor-primaria);">event_note</span>
+                            <h4 class="mt-2 mb-0">2.847</h4>
+                            <small class="text-muted">Eventos Hoje</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #28a745;">check_circle</span>
+                            <h4 class="mt-2 mb-0">98.5%</h4>
+                            <small class="text-muted">Operações OK</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #ffc107;">warning</span>
+                            <h4 class="mt-2 mb-0">12</h4>
+                            <small class="text-muted">Alertas</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #dc3545;">error</span>
+                            <h4 class="mt-2 mb-0">3</h4>
+                            <small class="text-muted">Erros</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtros de Auditoria -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-3">
+                            <label for="tipoEvento" class="form-label">Tipo de Evento</label>
+                            <select class="form-select" id="tipoEvento">
+                                <option value="">Todos</option>
+                                <option value="login">Login/Logout</option>
+                                <option value="cadastro">Cadastros</option>
+                                <option value="edicao">Edições</option>
+                                <option value="exclusao">Exclusões</option>
+                                <option value="acesso">Acessos</option>
+                                <option value="sistema">Sistema</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="usuario" class="form-label">Usuário</label>
+                            <input type="text" class="form-control" id="usuario" placeholder="Nome ou CPF...">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="dataInicio" class="form-label">Data Início</label>
+                            <input type="date" class="form-control" id="dataInicio">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="dataFim" class="form-label">Data Fim</label>
+                            <input type="date" class="form-control" id="dataFim">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <span class="material-icons-outlined icon-inline">search</span>
+                                Filtrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-9">
+                    <!-- Logs de Auditoria -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">list_alt</span>Registro de Atividades</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 140px;">Data/Hora</th>
+                                            <th>Usuário</th>
+                                            <th>Ação</th>
+                                            <th>Módulo</th>
+                                            <th>Detalhes</th>
+                                            <th style="width: 80px;">Status</th>
+                                            <th style="width: 60px;">IP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><small>23/10/2025 14:32</small></td>
+                                            <td><strong>Admin Principal</strong></td>
+                                            <td>Login bem-sucedido</td>
+                                            <td><span class="badge badge-info">Sistema</span></td>
+                                            <td>Acesso via navegador Chrome</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.10</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 14:28</small></td>
+                                            <td><strong>Fernando Silva</strong></td>
+                                            <td>Cadastro de professor</td>
+                                            <td><span class="badge badge-primary">Usuários</span></td>
+                                            <td>Ricardo Oliveira - CREF 045678/SP</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.25</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 14:15</small></td>
+                                            <td><strong>Maria Santos</strong></td>
+                                            <td>Exportação de relatório</td>
+                                            <td><span class="badge badge-warning">Relatórios</span></td>
+                                            <td>Relatório Mensal - Setembro/2025 (PDF)</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.32</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 14:10</small></td>
+                                            <td><strong>Carlos Mendes</strong></td>
+                                            <td>Registro de frequência</td>
+                                            <td><span class="badge badge-success">Frequência</span></td>
+                                            <td>Turma Futebol Sub-14 - 28 presentes</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.18</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 13:58</small></td>
+                                            <td><strong>Sistema</strong></td>
+                                            <td>Backup automático</td>
+                                            <td><span class="badge badge-secondary">Sistema</span></td>
+                                            <td>Backup completo executado com sucesso</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>Local</small></td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td><small>23/10/2025 13:45</small></td>
+                                            <td><strong>Ana Costa</strong></td>
+                                            <td>Tentativa de login</td>
+                                            <td><span class="badge badge-danger">Segurança</span></td>
+                                            <td>Senha incorreta - 3ª tentativa</td>
+                                            <td><span class="badge badge-warning">Alerta</span></td>
+                                            <td><small>192.168.1.45</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 13:30</small></td>
+                                            <td><strong>Admin Principal</strong></td>
+                                            <td>Criação de novo núcleo</td>
+                                            <td><span class="badge badge-primary">Núcleos</span></td>
+                                            <td>Núcleo Esportivo Vila Verde - Zona Leste</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.10</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 13:15</small></td>
+                                            <td><strong>João Silva</strong></td>
+                                            <td>Inscrição em turma</td>
+                                            <td><span class="badge badge-info">Alunos</span></td>
+                                            <td>Turma Vôlei Sub-12 - Centro Cívico</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.52</small></td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td><small>23/10/2025 12:50</small></td>
+                                            <td><strong>Sistema</strong></td>
+                                            <td>Erro no banco de dados</td>
+                                            <td><span class="badge badge-danger">Sistema</span></td>
+                                            <td>Timeout na conexão - Recuperado automaticamente</td>
+                                            <td><span class="badge badge-danger">Erro</span></td>
+                                            <td><small>Local</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><small>23/10/2025 12:30</small></td>
+                                            <td><strong>Ricardo Lima</strong></td>
+                                            <td>Atualização de perfil</td>
+                                            <td><span class="badge badge-primary">Usuários</span></td>
+                                            <td>Atualização de dados pessoais</td>
+                                            <td><span class="badge badge-success">OK</span></td>
+                                            <td><small>192.168.1.28</small></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav class="mt-3">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <!-- Eventos Críticos -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">priority_high</span>Eventos Críticos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-danger d-flex align-items-start mb-3">
+                                <span class="material-icons-outlined me-2" style="font-size: 1.2rem;">error</span>
+                                <div>
+                                    <strong>3 Erros</strong>
+                                    <p class="mb-0 small">Últimas 24 horas</p>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning d-flex align-items-start mb-3">
+                                <span class="material-icons-outlined me-2" style="font-size: 1.2rem;">warning</span>
+                                <div>
+                                    <strong>12 Alertas</strong>
+                                    <p class="mb-0 small">Últimas 24 horas</p>
+                                </div>
+                            </div>
+                            <div class="alert alert-info d-flex align-items-start mb-0">
+                                <span class="material-icons-outlined me-2" style="font-size: 1.2rem;">info</span>
+                                <div>
+                                    <strong>5 Tentativas de login</strong>
+                                    <p class="mb-0 small">Falhadas hoje</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acessos por Módulo -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">donut_large</span>Acessos Hoje</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Dashboard</small>
+                                    <small><strong>842</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Frequência</small>
+                                    <small><strong>624</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" style="width: 63%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Usuários</small>
+                                    <small><strong>487</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-info" style="width: 49%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Relatórios</small>
+                                    <small><strong>312</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" style="width: 31%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Configurações</small>
+                                    <small><strong>156</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-secondary" style="width: 16%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ações Rápidas -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">bolt</span>Ações</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-danger btn-sm">
+                                    <span class="material-icons-outlined icon-inline">delete_sweep</span>
+                                    Limpar Logs Antigos
+                                </button>
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <span class="material-icons-outlined icon-inline">save</span>
+                                    Arquivar Logs
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <span class="material-icons-outlined icon-inline">settings</span>
+                                    Configurar Auditoria
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

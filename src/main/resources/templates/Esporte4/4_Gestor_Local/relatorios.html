@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Relatórios - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorUsuario != null ? session.gestorUsuario : 'Gestor'}">Gestor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorNavbar" aria-controls="gestorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/gestor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorUsuario != null ? 'Gestor Municipal' : 'Gestor'}">Gestor Municipal</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title">Relatórios e Estatísticas</h1>
+
+            <!-- Filtros para gerar relatório -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">filter_alt</span>Gerar Relatório Personalizado</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="tipo" class="form-label">Tipo de Relatório</label>
+                                <select class="form-select" id="tipo" name="tipo">
+                                    <option value="geral">Geral</option>
+                                    <option value="frequencia">Frequência</option>
+                                    <option value="matriculas">Matrículas</option>
+                                    <option value="professores">Professores</option>
+                                    <option value="nucleos">Núcleos</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="nucleo" class="form-label">Núcleo</label>
+                                <select class="form-select" id="nucleo" name="nucleo">
+                                    <option value="">Todos</option>
+                                    <option value="centro">Centro Cívico</option>
+                                    <option value="morada">Morada do Sol</option>
+                                    <option value="jardim">Jardim Paulista</option>
+                                    <option value="furlan">Vila Furlan</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="dataInicio" class="form-label">Data Início</label>
+                                <input type="date" class="form-control" id="dataInicio" name="dataInicio" value="2025-01-01">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="dataFim" class="form-label">Data Fim</label>
+                                <input type="date" class="form-control" id="dataFim" name="dataFim" value="2025-10-23">
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary me-2">
+                                <span class="material-icons-outlined icon-inline">download</span>
+                                Exportar PDF
+                            </button>
+                            <button type="button" class="btn btn-outline-primary">
+                                <span class="material-icons-outlined icon-inline">table_view</span>
+                                Exportar Excel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Relatórios rápidos -->
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">description</span>Relatórios Rápidos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="material-icons-outlined icon-inline text-primary">summarize</span>
+                                            <strong>Resumo Mensal de Atividades</strong>
+                                            <br><small class="text-muted">Visão geral do mês atual</small>
+                                        </div>
+                                        <span class="material-icons-outlined">download</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="material-icons-outlined icon-inline text-success">fact_check</span>
+                                            <strong>Relatório de Frequência</strong>
+                                            <br><small class="text-muted">Frequência por núcleo e modalidade</small>
+                                        </div>
+                                        <span class="material-icons-outlined">download</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="material-icons-outlined icon-inline text-info">people</span>
+                                            <strong>Lista de Alunos Ativos</strong>
+                                            <br><small class="text-muted">Todos os alunos matriculados</small>
+                                        </div>
+                                        <span class="material-icons-outlined">download</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="material-icons-outlined icon-inline text-warning">school</span>
+                                            <strong>Desempenho dos Professores</strong>
+                                            <br><small class="text-muted">Avaliação e estatísticas</small>
+                                        </div>
+                                        <span class="material-icons-outlined">download</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estatísticas do mês -->
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">calendar_month</span>Estatísticas do Mês</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Novas Matrículas</span>
+                                    <strong>67</strong>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Frequência Média</span>
+                                    <strong>87%</strong>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 87%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Taxa de Evasão</span>
+                                    <strong>5%</strong>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" style="width: 5%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span>Satisfação (Pesquisas)</span>
+                                    <strong>4.6/5.0</strong>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-info" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history</span>Relatórios Recentes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">20/10/2025 14:30</small>
+                                        <span class="badge badge-info">PDF</span>
+                                    </div>
+                                    <div>Relatório Geral - Setembro 2025</div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">15/10/2025 10:15</small>
+                                        <span class="badge badge-success">Excel</span>
+                                    </div>
+                                    <div>Frequência por Núcleo</div>
+                                </div>
+                                <div class="list-group-item px-0">
+                                    <div class="d-flex justify-content-between">
+                                        <small class="text-muted">10/10/2025 16:45</small>
+                                        <span class="badge badge-info">PDF</span>
+                                    </div>
+                                    <div>Lista de Alunos Ativos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

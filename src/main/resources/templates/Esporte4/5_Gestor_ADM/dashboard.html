@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Painel Administrativo - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorAdmUsuario != null ? session.gestorAdmUsuario : 'Admin'}">Admin</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorAdmNavbar" aria-controls="gestorAdmNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorAdmNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/gestor-adm/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/usuarios">Usuários</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/auditoria">Auditoria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorAdmUsuario != null ? 'Administrador' : 'Admin'}">Administrador</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h1 class="page-title">Painel Administrativo</h1>
+                <div>
+                    <span class="badge badge-danger"><span class="material-icons-outlined icon-inline">verified_user</span>Acesso Total</span>
+                </div>
+            </div>
+
+            <!-- Indicadores Principais -->
+            <div class="indicators-grid mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="card-title mb-2">Total de Alunos</h3>
+                                <p class="display-6 fw-bold mb-1">1.248</p>
+                                <small class="text-success"><span class="material-icons-outlined icon-inline" style="font-size: 1rem;">trending_up</span>+12% este mês</small>
+                            </div>
+                            <div class="indicator-icon" style="background: rgba(0,86,163,0.1);">
+                                <span class="material-icons-outlined" style="color: var(--cor-primaria);">groups</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="card-title mb-2">Núcleos Ativos</h3>
+                                <p class="display-6 fw-bold mb-1">12</p>
+                                <small class="text-muted">Distribuídos pela cidade</small>
+                            </div>
+                            <div class="indicator-icon" style="background: rgba(40,167,69,0.1);">
+                                <span class="material-icons-outlined" style="color: #28a745;">apartment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="card-title mb-2">Professores</h3>
+                                <p class="display-6 fw-bold mb-1">38</p>
+                                <small class="text-success"><span class="material-icons-outlined icon-inline" style="font-size: 1rem;">add</span>2 novos</small>
+                            </div>
+                            <div class="indicator-icon" style="background: rgba(255,193,7,0.1);">
+                                <span class="material-icons-outlined" style="color: #ffc107;">school</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h3 class="card-title mb-2">Taxa de Frequência</h3>
+                                <p class="display-6 fw-bold mb-1">89%</p>
+                                <small class="text-success"><span class="material-icons-outlined icon-inline" style="font-size: 1rem;">check_circle</span>Acima da meta</small>
+                            </div>
+                            <div class="indicator-icon" style="background: rgba(23,162,184,0.1);">
+                                <span class="material-icons-outlined" style="color: #17a2b8;">event_available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <!-- Desempenho por Região -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">bar_chart</span>Desempenho por Região</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Região</th>
+                                            <th>Núcleos</th>
+                                            <th>Alunos</th>
+                                            <th>Professores</th>
+                                            <th>Frequência Média</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Centro</strong></td>
+                                            <td>3</td>
+                                            <td>342</td>
+                                            <td>11</td>
+                                            <td><span class="badge badge-success">92%</span></td>
+                                            <td><span class="badge badge-success">Excelente</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Zona Norte</strong></td>
+                                            <td>4</td>
+                                            <td>428</td>
+                                            <td>14</td>
+                                            <td><span class="badge badge-success">88%</span></td>
+                                            <td><span class="badge badge-success">Bom</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Zona Sul</strong></td>
+                                            <td>3</td>
+                                            <td>298</td>
+                                            <td>9</td>
+                                            <td><span class="badge badge-warning">76%</span></td>
+                                            <td><span class="badge badge-warning">Atenção</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Zona Leste</strong></td>
+                                            <td>2</td>
+                                            <td>180</td>
+                                            <td>4</td>
+                                            <td><span class="badge badge-success">90%</span></td>
+                                            <td><span class="badge badge-success">Excelente</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atividades Recentes -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history</span>Atividades Recentes do Sistema</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-3 pb-3 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-3 text-success">person_add</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Novo professor cadastrado</strong>
+                                            <p class="mb-0 text-muted small">Ricardo Oliveira - CREF 045678/SP - Núcleo Jardim Paulista</p>
+                                            <small class="text-muted">Há 2 horas</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mb-3 pb-3 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-3 text-primary">add_location</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Novo núcleo criado</strong>
+                                            <p class="mb-0 text-muted small">Núcleo Esportivo Vila Verde - Zona Leste</p>
+                                            <small class="text-muted">Há 5 horas</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mb-3 pb-3 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-3 text-info">assessment</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Relatório mensal gerado</strong>
+                                            <p class="mb-0 text-muted small">Relatório Completo de Atividades - Setembro 2025</p>
+                                            <small class="text-muted">Ontem às 18:30</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mb-0">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-3 text-warning">warning</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Alerta de frequência</strong>
+                                            <p class="mb-0 text-muted small">Núcleo Jardim América com frequência abaixo de 75%</p>
+                                            <small class="text-muted">Há 2 dias</small>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Alertas Críticos -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">notification_important</span>Alertas Críticos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-danger d-flex align-items-start mb-3">
+                                <span class="material-icons-outlined me-2">error</span>
+                                <div>
+                                    <strong>Backup do sistema</strong>
+                                    <p class="mb-0 small">Último backup há 8 dias. Executar imediatamente.</p>
+                                </div>
+                            </div>
+                            <div class="alert alert-warning d-flex align-items-start mb-3">
+                                <span class="material-icons-outlined me-2">warning</span>
+                                <div>
+                                    <strong>Licença CREF vencida</strong>
+                                    <p class="mb-0 small">3 professores com licença a vencer em 15 dias.</p>
+                                </div>
+                            </div>
+                            <div class="alert alert-info d-flex align-items-start mb-0">
+                                <span class="material-icons-outlined me-2">info</span>
+                                <div>
+                                    <strong>Atualização disponível</strong>
+                                    <p class="mb-0 small">Versão 4.2.1 do sistema pronta para instalação.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estatísticas Rápidas -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">speed</span>Estatísticas Rápidas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Capacidade Total</small>
+                                    <small><strong>82%</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" style="width: 82%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Satisfação (NPS)</small>
+                                    <small><strong>4.8/5.0</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Taxa de Retenção</small>
+                                    <small><strong>94%</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-info" style="width: 94%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Meta Anual</small>
+                                    <small><strong>67%</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" style="width: 67%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ações Rápidas -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">bolt</span>Ações Rápidas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="/gestor-adm/usuarios" class="btn btn-outline-primary">
+                                    <span class="material-icons-outlined icon-inline">person_add</span>
+                                    Cadastrar Usuário
+                                </a>
+                                <a href="/gestor-adm/nucleos" class="btn btn-outline-success">
+                                    <span class="material-icons-outlined icon-inline">add_location</span>
+                                    Novo Núcleo
+                                </a>
+                                <a href="/gestor-adm/relatorios" class="btn btn-outline-info">
+                                    <span class="material-icons-outlined icon-inline">assessment</span>
+                                    Gerar Relatório
+                                </a>
+                                <a href="/gestor-adm/auditoria" class="btn btn-outline-secondary">
+                                    <span class="material-icons-outlined icon-inline">policy</span>
+                                    Ver Logs
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

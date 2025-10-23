@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Dashboard Gestor - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorUsuario != null ? session.gestorUsuario : 'Gestor'}">Gestor</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorNavbar" aria-controls="gestorNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="/gestor/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorUsuario != null ? 'Gestor Municipal' : 'Gestor'}">Gestor Municipal</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title">Painel de Gestão Municipal</h1>
+            <p class="lead">Visão geral do Programa Esporte Cidadão</p>
+
+            <!-- Indicadores principais -->
+            <div class="indicators-grid mb-4">
+                <div class="indicator-card">
+                    <span class="material-icons-outlined">location_city</span>
+                    <div class="indicator-info">
+                        <span class="indicator-label">Núcleos Ativos</span>
+                        <span class="indicator-value">8</span>
+                    </div>
+                </div>
+                <div class="indicator-card">
+                    <span class="material-icons-outlined">school</span>
+                    <div class="indicator-info">
+                        <span class="indicator-label">Professores</span>
+                        <span class="indicator-value">24</span>
+                    </div>
+                </div>
+                <div class="indicator-card">
+                    <span class="material-icons-outlined">groups</span>
+                    <div class="indicator-info">
+                        <span class="indicator-label">Alunos Matriculados</span>
+                        <span class="indicator-value">856</span>
+                    </div>
+                </div>
+                <div class="indicator-card">
+                    <span class="material-icons-outlined">sports_soccer</span>
+                    <div class="indicator-info">
+                        <span class="indicator-label">Modalidades</span>
+                        <span class="indicator-value">12</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Gráficos e estatísticas -->
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">bar_chart</span>Matrículas por Núcleo</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Núcleo</th>
+                                            <th class="text-center">Alunos</th>
+                                            <th class="text-center">Professores</th>
+                                            <th class="text-center">Turmas</th>
+                                            <th class="text-center">Frequência</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Centro Cívico</strong></td>
+                                            <td class="text-center">156</td>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center">8</td>
+                                            <td class="text-center"><span class="badge badge-success">92%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Morada do Sol</strong></td>
+                                            <td class="text-center">128</td>
+                                            <td class="text-center">4</td>
+                                            <td class="text-center">6</td>
+                                            <td class="text-center"><span class="badge badge-success">89%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Jardim Paulista</strong></td>
+                                            <td class="text-center">98</td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center"><span class="badge badge-warning">78%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Vila Furlan</strong></td>
+                                            <td class="text-center">112</td>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">6</td>
+                                            <td class="text-center"><span class="badge badge-success">85%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Outros Núcleos</strong></td>
+                                            <td class="text-center">362</td>
+                                            <td class="text-center">9</td>
+                                            <td class="text-center">18</td>
+                                            <td class="text-center"><span class="badge badge-success">87%</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">trending_up</span>Modalidades Mais Procuradas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span><span class="material-icons-outlined icon-inline">sports_soccer</span>Futebol</span>
+                                        <strong>287 alunos</strong>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span><span class="material-icons-outlined icon-inline">sports_volleyball</span>Vôlei</span>
+                                        <strong>156 alunos</strong>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 54%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span><span class="material-icons-outlined icon-inline">sports_basketball</span>Basquete</span>
+                                        <strong>134 alunos</strong>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-info" style="width: 47%"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <span><span class="material-icons-outlined icon-inline">sports_handball</span>Handebol</span>
+                                        <strong>98 alunos</strong>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 34%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alertas e ações rápidas -->
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">notifications_active</span>Alertas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-warning mb-3">
+                                <strong><span class="material-icons-outlined icon-inline">warning</span>Frequência Baixa</strong>
+                                <p class="mb-0 small">Núcleo Jardim Paulista com frequência abaixo de 80%</p>
+                            </div>
+                            <div class="alert alert-info mb-3">
+                                <strong><span class="material-icons-outlined icon-inline">inventory_2</span>Material Solicitado</strong>
+                                <p class="mb-0 small">3 solicitações de reposição pendentes</p>
+                            </div>
+                            <div class="alert alert-success mb-0">
+                                <strong><span class="material-icons-outlined icon-inline">check_circle</span>Meta Atingida</strong>
+                                <p class="mb-0 small">850+ alunos matriculados este mês!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">flash_on</span>Ações Rápidas</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="/gestor/nucleos" class="btn btn-outline-primary">
+                                    <span class="material-icons-outlined icon-inline">add_location</span>
+                                    Cadastrar Núcleo
+                                </a>
+                                <a href="/gestor/professores" class="btn btn-outline-primary">
+                                    <span class="material-icons-outlined icon-inline">person_add</span>
+                                    Cadastrar Professor
+                                </a>
+                                <a href="/gestor/relatorios" class="btn btn-outline-primary">
+                                    <span class="material-icons-outlined icon-inline">download</span>
+                                    Exportar Relatório
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

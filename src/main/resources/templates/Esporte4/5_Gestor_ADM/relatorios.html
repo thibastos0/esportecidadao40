@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Relatórios Administrativos - Plataforma Esporte 4.0</title>
+    
+    <!-- Bootstrap CSS (WebJars) -->
+    <link rel="stylesheet" href="/webjars/bootstrap/5.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/esporte4/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Brand top and navbar -->
+    <div class="brand-top">
+        <div class="container">
+            <div class="crest"><img src="/esporte4/images/indaiatuba_brasao.svg" alt="Brasão"></div>
+            <div class="brand-text">
+                <strong>SECRETARIA MUNICIPAL</strong>
+                <small>DE ESPORTES</small>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light esporte-navbar">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">Esporte<span class="text-success">4.0</span></a>
+            <div class="mobile-user-greeting d-lg-none me-2">
+                <span class="user-name" th:text="${session.gestorAdmUsuario != null ? session.gestorAdmUsuario : 'Admin'}">Admin</span>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#gestorAdmNavbar" aria-controls="gestorAdmNavbar" aria-expanded="false" aria-label="Alternar navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="gestorAdmNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/dashboard">Painel</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/usuarios">Usuários</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor-adm/relatorios">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/auditoria">Auditoria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor-adm/perfil">Meu Perfil</a></li>
+                    <li class="nav-item d-lg-none"><a class="nav-link" href="/logout">Sair</a></li>
+                </ul>
+                <div class="auth-area desktop-user-greeting">
+                    <span class="me-3">Olá, <strong th:text="${session.gestorAdmUsuario != null ? 'Administrador' : 'Admin'}">Administrador</strong></span>
+                    <a href="/logout" class="btn-auth outline">Sair</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container py-4">
+            <h1 class="page-title mb-4">Relatórios Administrativos</h1>
+
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <!-- Gerador de Relatórios Personalizado -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">description</span>Gerador de Relatórios Customizados</h3>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="tipoRelatorio" class="form-label">Tipo de Relatório</label>
+                                        <select class="form-select" id="tipoRelatorio">
+                                            <option value="geral">Relatório Geral do Sistema</option>
+                                            <option value="financeiro">Relatório Financeiro</option>
+                                            <option value="pedagogico">Relatório Pedagógico</option>
+                                            <option value="frequencia">Análise de Frequência</option>
+                                            <option value="desempenho">Avaliação de Desempenho</option>
+                                            <option value="infraestrutura">Infraestrutura e Equipamentos</option>
+                                            <option value="pessoal">Recursos Humanos</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="periodo" class="form-label">Período</label>
+                                        <select class="form-select" id="periodo">
+                                            <option value="mes_atual">Mês Atual</option>
+                                            <option value="trimestre">Último Trimestre</option>
+                                            <option value="semestre">Último Semestre</option>
+                                            <option value="ano">Ano Completo</option>
+                                            <option value="custom">Personalizado</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="regiao" class="form-label">Região/Núcleo</label>
+                                        <select class="form-select" id="regiao">
+                                            <option value="todos">Todos os Núcleos</option>
+                                            <option value="centro">Centro</option>
+                                            <option value="norte">Zona Norte</option>
+                                            <option value="sul">Zona Sul</option>
+                                            <option value="leste">Zona Leste</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="formato" class="form-label">Formato de Exportação</label>
+                                        <select class="form-select" id="formato">
+                                            <option value="pdf">PDF (Documento)</option>
+                                            <option value="excel">Excel (Planilha)</option>
+                                            <option value="csv">CSV (Dados Brutos)</option>
+                                            <option value="dashboard">Dashboard Interativo</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <span class="material-icons-outlined icon-inline">file_download</span>
+                                        Gerar e Exportar
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary">
+                                        <span class="material-icons-outlined icon-inline">preview</span>
+                                        Pré-visualizar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Relatórios Automatizados -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">schedule</span>Relatórios Automatizados</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome do Relatório</th>
+                                            <th>Frequência</th>
+                                            <th>Última Geração</th>
+                                            <th>Próxima Geração</th>
+                                            <th>Status</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Relatório Mensal Completo</strong></td>
+                                            <td><span class="badge badge-info">Mensal</span></td>
+                                            <td>01/10/2025</td>
+                                            <td>01/11/2025</td>
+                                            <td><span class="badge badge-success">Ativo</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" title="Baixar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">download</span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Configurar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">settings</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Análise Semanal de Frequência</strong></td>
+                                            <td><span class="badge badge-primary">Semanal</span></td>
+                                            <td>20/10/2025</td>
+                                            <td>27/10/2025</td>
+                                            <td><span class="badge badge-success">Ativo</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" title="Baixar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">download</span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Configurar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">settings</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Indicadores de Performance</strong></td>
+                                            <td><span class="badge badge-warning">Trimestral</span></td>
+                                            <td>01/07/2025</td>
+                                            <td>01/01/2026</td>
+                                            <td><span class="badge badge-success">Ativo</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" title="Baixar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">download</span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Configurar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">settings</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Balanço Anual Consolidado</strong></td>
+                                            <td><span class="badge badge-danger">Anual</span></td>
+                                            <td>01/01/2025</td>
+                                            <td>01/01/2026</td>
+                                            <td><span class="badge badge-success">Ativo</span></td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary" title="Baixar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">download</span>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-secondary" title="Configurar">
+                                                    <span class="material-icons-outlined" style="font-size: 1rem;">settings</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <!-- Relatórios Rápidos -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">flash_on</span>Relatórios Rápidos</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-primary text-start">
+                                    <span class="material-icons-outlined icon-inline">people</span>
+                                    Total de Alunos por Núcleo
+                                </button>
+                                <button class="btn btn-outline-success text-start">
+                                    <span class="material-icons-outlined icon-inline">event_available</span>
+                                    Frequência Geral do Mês
+                                </button>
+                                <button class="btn btn-outline-info text-start">
+                                    <span class="material-icons-outlined icon-inline">school</span>
+                                    Professores Ativos
+                                </button>
+                                <button class="btn btn-outline-warning text-start">
+                                    <span class="material-icons-outlined icon-inline">sports</span>
+                                    Modalidades Mais Populares
+                                </button>
+                                <button class="btn btn-outline-danger text-start">
+                                    <span class="material-icons-outlined icon-inline">warning</span>
+                                    Alertas e Pendências
+                                </button>
+                                <button class="btn btn-outline-secondary text-start">
+                                    <span class="material-icons-outlined icon-inline">attach_money</span>
+                                    Resumo Financeiro
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estatísticas do Mês -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">calendar_month</span>Estatísticas de Outubro/2025</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Novas Inscrições</small>
+                                    <small><strong>87 alunos</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-primary" style="width: 72%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Taxa de Frequência</small>
+                                    <small><strong>89%</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" style="width: 89%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Taxa de Evasão</small>
+                                    <small><strong>4.2%</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-warning" style="width: 4%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <small>Satisfação (NPS)</small>
+                                    <small><strong>4.8/5.0</strong></small>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-info" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Histórico de Relatórios -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">history</span>Histórico Recente</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-3 pb-3 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-2 text-primary">description</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Relatório Mensal</strong>
+                                            <p class="mb-0 small text-muted">Setembro 2025 - Completo</p>
+                                            <small class="text-muted">Gerado em 01/10/2025</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <span class="material-icons-outlined" style="font-size: 0.9rem;">download</span>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="mb-3 pb-3 border-bottom">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-2 text-success">assessment</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Análise Trimestral</strong>
+                                            <p class="mb-0 small text-muted">Q3 2025 - Indicadores</p>
+                                            <small class="text-muted">Gerado em 30/09/2025</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <span class="material-icons-outlined" style="font-size: 0.9rem;">download</span>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="mb-0">
+                                    <div class="d-flex align-items-start">
+                                        <span class="material-icons-outlined me-2 text-info">bar_chart</span>
+                                        <div class="flex-grow-1">
+                                            <strong>Dashboard Executivo</strong>
+                                            <p class="mb-0 small text-muted">Agosto 2025 - Geral</p>
+                                            <small class="text-muted">Gerado em 01/09/2025</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <span class="material-icons-outlined" style="font-size: 0.9rem;">download</span>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <p>Plataforma Esporte 4.0 - Desenvolvido para a Gestão Esportiva Municipal</p>
+            <p>&copy; 2025. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS bundle (WebJars) -->
+    <script src="/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/esporte4/js/main.js"></script>
+</body>
+</html>

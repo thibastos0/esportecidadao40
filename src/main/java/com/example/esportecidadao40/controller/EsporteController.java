@@ -36,6 +36,20 @@ public class EsporteController {
         return "redirect:/professor/dashboard";
     }
 
+    // Simulated login for gestor: sets gestorUsuario and redirects to gestor dashboard
+    @GetMapping("/do-login-gestor")
+    public String doLoginGestor(HttpSession session) {
+        session.setAttribute("gestorUsuario", "gestor-simulado");
+        return "redirect:/gestor/dashboard";
+    }
+
+    // Simulated login for gestor ADM: sets gestorAdmUsuario and redirects to gestor-adm dashboard
+    @GetMapping("/do-login-gestor-adm")
+    public String doLoginGestorAdm(HttpSession session) {
+        session.setAttribute("gestorAdmUsuario", "admin-simulado");
+        return "redirect:/gestor-adm/dashboard";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
@@ -130,6 +144,104 @@ public class EsporteController {
             return "redirect:/login";
         }
         return "Esporte4/3_Telas_Professor/perfil";
+    }
+
+    // Area do gestor (session check with gestorUsuario)
+    @GetMapping("/gestor/dashboard")
+    public String gestorDashboard(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/dashboard";
+    }
+
+    @GetMapping("/gestor/nucleos")
+    public String gestorNucleos(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/nucleos";
+    }
+
+    @GetMapping("/gestor/professores")
+    public String gestorProfessores(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/professores";
+    }
+
+    @GetMapping("/gestor/relatorios")
+    public String gestorRelatorios(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/relatorios";
+    }
+
+    @GetMapping("/gestor/configuracoes")
+    public String gestorConfiguracoes(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/configuracoes";
+    }
+
+    @GetMapping("/gestor/perfil")
+    public String gestorPerfil(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/perfil";
+    }
+
+    // Area do gestor ADM (session check with gestorAdmUsuario)
+    @GetMapping("/gestor-adm/dashboard")
+    public String gestorAdmDashboard(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/dashboard";
+    }
+
+    @GetMapping("/gestor-adm/usuarios")
+    public String gestorAdmUsuarios(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/usuarios";
+    }
+
+    @GetMapping("/gestor-adm/nucleos")
+    public String gestorAdmNucleos(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/nucleos";
+    }
+
+    @GetMapping("/gestor-adm/relatorios")
+    public String gestorAdmRelatorios(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/relatorios";
+    }
+
+    @GetMapping("/gestor-adm/auditoria")
+    public String gestorAdmAuditoria(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/auditoria";
+    }
+
+    @GetMapping("/gestor-adm/perfil")
+    public String gestorAdmPerfil(HttpSession session) {
+        if (session.getAttribute("gestorAdmUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/5_Gestor_ADM/perfil";
     }
 
 }
