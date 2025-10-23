@@ -35,9 +35,9 @@
             </button>
             <div class="collapse navbar-collapse" id="gestorNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/gestor/dashboard">Painel</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/gestor/nucleos">Meu Núcleo</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/materiais">Materiais</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
@@ -54,112 +54,199 @@
     <main>
         <div class="container py-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="page-title mb-0">Gestão de Núcleos</h1>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoNucleoModal">
-                    <span class="material-icons-outlined icon-inline">add_location</span>
-                    Novo Núcleo
-                </button>
+                <div>
+                    <h1 class="page-title mb-1">Núcleo Centro Cívico</h1>
+                    <p class="text-muted mb-0">
+                        <span class="material-icons-outlined icon-inline">place</span>
+                        Av. Presidente Vargas, 1000 - Centro
+                    </p>
+                </div>
+                <span class="badge badge-success" style="font-size: 1rem; padding: 0.5rem 1rem;">Ativo</span>
             </div>
 
-            <!-- Cards dos núcleos -->
+            <!-- Informações principais -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #28a745;">groups</span>
+                            <h3 class="mt-2 mb-0">156</h3>
+                            <p class="text-muted mb-0">Alunos Ativos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #007bff;">school</span>
+                            <h3 class="mt-2 mb-0">5</h3>
+                            <p class="text-muted mb-0">Professores</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #6f42c1;">sports</span>
+                            <h3 class="mt-2 mb-0">8</h3>
+                            <p class="text-muted mb-0">Turmas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2.5rem; color: #fd7e14;">emoji_events</span>
+                            <h3 class="mt-2 mb-0">92%</h3>
+                            <p class="text-muted mb-0">Frequência</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informações de contato e infraestrutura -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">info</span>Informações de Contato</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">phone</span>
+                                <strong>Telefone:</strong> (19) 3834-5600
+                            </p>
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">email</span>
+                                <strong>E-mail:</strong> centrocivico@esporte.indaiatuba.sp.gov.br
+                            </p>
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">schedule</span>
+                                <strong>Horário:</strong> Segunda a Sexta, 8h às 20h
+                            </p>
+                            <p class="mb-0">
+                                <span class="material-icons-outlined icon-inline">weekend</span>
+                                <strong>Sábado:</strong> 8h às 14h
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">business</span>Infraestrutura</h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">sports_soccer</span>
+                                <strong>Campo de Futebol:</strong> 1 (gramado sintético)
+                            </p>
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">sports_basketball</span>
+                                <strong>Quadra Poliesportiva:</strong> 2 (cobertas)
+                            </p>
+                            <p class="mb-2">
+                                <span class="material-icons-outlined icon-inline">fitness_center</span>
+                                <strong>Sala de Musculação:</strong> 1 (equipada)
+                            </p>
+                            <p class="mb-0">
+                                <span class="material-icons-outlined icon-inline">people</span>
+                                <strong>Capacidade Total:</strong> 200 alunos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modalidades e equipamentos -->
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Centro Cívico</h3>
-                            <span class="badge badge-success">Ativo</span>
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">sports</span>Modalidades Oferecidas</h3>
                         </div>
                         <div class="card-body">
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua XV de Novembro, 1500</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 156</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 5</p>
-                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Vôlei, Basquete</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
-                                    <span class="material-icons-outlined icon-inline">edit</span>
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <span class="material-icons-outlined icon-inline">visibility</span>
-                                    Detalhes
-                                </button>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span><strong>Futebol</strong> - 53 alunos</span>
+                                    <span class="badge badge-success">Ativo</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span><strong>Vôlei</strong> - 42 alunos</span>
+                                    <span class="badge badge-success">Ativo</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 63%"></div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span><strong>Basquete</strong> - 42 alunos</span>
+                                    <span class="badge badge-success">Ativo</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 63%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex justify-content-between mb-1">
+                                    <span><strong>Judô</strong> - 19 alunos</span>
+                                    <span class="badge badge-success">Ativo</span>
+                                </div>
+                                <div class="progress" style="height: 8px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 29%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Morada do Sol</h3>
-                            <span class="badge badge-success">Ativo</span>
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">inventory</span>Equipamentos Disponíveis</h3>
                         </div>
                         <div class="card-body">
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Av. Brasil, 850</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 128</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 4</p>
-                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Handebol</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
-                                    <span class="material-icons-outlined icon-inline">edit</span>
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <span class="material-icons-outlined icon-inline">visibility</span>
-                                    Detalhes
-                                </button>
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <div class="border rounded p-2 text-center">
+                                        <span class="material-icons-outlined" style="font-size: 1.5rem; color: #28a745;">sports_soccer</span>
+                                        <p class="mb-0 mt-1"><small><strong>Bolas de Futebol</strong></small></p>
+                                        <p class="mb-0"><small>24 unidades</small></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="border rounded p-2 text-center">
+                                        <span class="material-icons-outlined" style="font-size: 1.5rem; color: #007bff;">sports_volleyball</span>
+                                        <p class="mb-0 mt-1"><small><strong>Bolas de Vôlei</strong></small></p>
+                                        <p class="mb-0"><small>18 unidades</small></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="border rounded p-2 text-center">
+                                        <span class="material-icons-outlined" style="font-size: 1.5rem; color: #fd7e14;">sports_basketball</span>
+                                        <p class="mb-0 mt-1"><small><strong>Bolas de Basquete</strong></small></p>
+                                        <p class="mb-0"><small>16 unidades</small></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="border rounded p-2 text-center">
+                                        <span class="material-icons-outlined" style="font-size: 1.5rem; color: #6f42c1;">sports_martial_arts</span>
+                                        <p class="mb-0 mt-1"><small><strong>Tatames de Judô</strong></small></p>
+                                        <p class="mb-0"><small>40 unidades</small></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Jardim Paulista</h3>
-                            <span class="badge badge-warning">Atenção</span>
-                        </div>
-                        <div class="card-body">
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua das Flores, 320</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 98</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 3</p>
-                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Vôlei, Basquete</p>
-                            <div class="alert alert-warning p-2 mb-3">
-                                <small><strong>Frequência baixa:</strong> 78%</small>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
-                                    <span class="material-icons-outlined icon-inline">edit</span>
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <span class="material-icons-outlined icon-inline">visibility</span>
-                                    Detalhes
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">location_on</span>Vila Furlan</h3>
-                            <span class="badge badge-success">Ativo</span>
-                        </div>
-                        <div class="card-body">
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">place</span><strong>Endereço:</strong> Rua Santos Dumont, 1200</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">groups</span><strong>Alunos:</strong> 112</p>
-                            <p class="mb-2"><span class="material-icons-outlined icon-inline">school</span><strong>Professores:</strong> 3</p>
-                            <p class="mb-3"><span class="material-icons-outlined icon-inline">sports</span><strong>Modalidades:</strong> Futebol, Futsal</p>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-primary flex-grow-1">
-                                    <span class="material-icons-outlined icon-inline">edit</span>
-                                    Editar
-                                </button>
-                                <button class="btn btn-sm btn-outline-secondary">
-                                    <span class="material-icons-outlined icon-inline">visibility</span>
-                                    Detalhes
+                            <div class="mt-3 text-center">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <span class="material-icons-outlined icon-inline">add_circle</span>
+                                    Solicitar Material
                                 </button>
                             </div>
                         </div>

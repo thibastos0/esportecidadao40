@@ -35,9 +35,9 @@
             </button>
             <div class="collapse navbar-collapse" id="gestorNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="/gestor/dashboard">Painel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Meu Núcleo</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/materiais">Materiais</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
@@ -53,37 +53,42 @@
 
     <main>
         <div class="container py-4">
-            <h1 class="page-title">Painel de Gestão Municipal</h1>
-            <p class="lead">Visão geral do Programa Esporte Cidadão</p>
+            <div class="d-flex justify-content-between align-items-start mb-4">
+                <div>
+                    <h1 class="page-title">Núcleo Centro Cívico</h1>
+                    <p class="lead mb-0">Av. Presidente Vargas, 1000 - Centro</p>
+                </div>
+                <span class="badge badge-success" style="font-size: 1rem; padding: 0.5rem 1rem;">Ativo</span>
+            </div>
 
-            <!-- Indicadores principais -->
+            <!-- Indicadores principais do núcleo -->
             <div class="indicators-grid mb-4">
                 <div class="indicator-card">
-                    <span class="material-icons-outlined">location_city</span>
+                    <span class="material-icons-outlined">groups</span>
                     <div class="indicator-info">
-                        <span class="indicator-label">Núcleos Ativos</span>
-                        <span class="indicator-value">8</span>
+                        <span class="indicator-label">Alunos Ativos</span>
+                        <span class="indicator-value">156</span>
                     </div>
                 </div>
                 <div class="indicator-card">
                     <span class="material-icons-outlined">school</span>
                     <div class="indicator-info">
                         <span class="indicator-label">Professores</span>
-                        <span class="indicator-value">24</span>
+                        <span class="indicator-value">5</span>
                     </div>
                 </div>
                 <div class="indicator-card">
-                    <span class="material-icons-outlined">groups</span>
+                    <span class="material-icons-outlined">class</span>
                     <div class="indicator-info">
-                        <span class="indicator-label">Alunos Matriculados</span>
-                        <span class="indicator-value">856</span>
+                        <span class="indicator-label">Turmas</span>
+                        <span class="indicator-value">8</span>
                     </div>
                 </div>
                 <div class="indicator-card">
-                    <span class="material-icons-outlined">sports_soccer</span>
+                    <span class="material-icons-outlined">event_available</span>
                     <div class="indicator-info">
-                        <span class="indicator-label">Modalidades</span>
-                        <span class="indicator-value">12</span>
+                        <span class="indicator-label">Frequência Média</span>
+                        <span class="indicator-value">92%</span>
                     </div>
                 </div>
             </div>
@@ -93,55 +98,77 @@
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">bar_chart</span>Matrículas por Núcleo</h3>
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">class</span>Turmas do Núcleo</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="data-table">
                                     <thead>
                                         <tr>
-                                            <th>Núcleo</th>
+                                            <th>Modalidade</th>
+                                            <th>Categoria</th>
+                                            <th>Professor</th>
                                             <th class="text-center">Alunos</th>
-                                            <th class="text-center">Professores</th>
-                                            <th class="text-center">Turmas</th>
+                                            <th class="text-center">Horário</th>
                                             <th class="text-center">Frequência</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td><strong>Centro Cívico</strong></td>
-                                            <td class="text-center">156</td>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center">8</td>
-                                            <td class="text-center"><span class="badge badge-success">92%</span></td>
+                                            <td><strong>Futebol</strong></td>
+                                            <td>Sub-14</td>
+                                            <td>Carlos Mendes</td>
+                                            <td class="text-center">28</td>
+                                            <td class="text-center">Ter/Qui 14h</td>
+                                            <td class="text-center"><span class="badge badge-success">95%</span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Morada do Sol</strong></td>
-                                            <td class="text-center">128</td>
-                                            <td class="text-center">4</td>
-                                            <td class="text-center">6</td>
+                                            <td><strong>Vôlei</strong></td>
+                                            <td>Sub-12</td>
+                                            <td>Ana Costa</td>
+                                            <td class="text-center">22</td>
+                                            <td class="text-center">Seg/Qua 15h</td>
+                                            <td class="text-center"><span class="badge badge-success">91%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Basquete</strong></td>
+                                            <td>Sub-16</td>
+                                            <td>Ricardo Silva</td>
+                                            <td class="text-center">18</td>
+                                            <td class="text-center">Seg/Qua 16h</td>
                                             <td class="text-center"><span class="badge badge-success">89%</span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Jardim Paulista</strong></td>
-                                            <td class="text-center">98</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">5</td>
-                                            <td class="text-center"><span class="badge badge-warning">78%</span></td>
+                                            <td><strong>Futebol</strong></td>
+                                            <td>Sub-10</td>
+                                            <td>Carlos Mendes</td>
+                                            <td class="text-center">25</td>
+                                            <td class="text-center">Ter/Qui 15h</td>
+                                            <td class="text-center"><span class="badge badge-success">93%</span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Vila Furlan</strong></td>
-                                            <td class="text-center">112</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-center">6</td>
-                                            <td class="text-center"><span class="badge badge-success">85%</span></td>
+                                            <td><strong>Vôlei</strong></td>
+                                            <td>Sub-14</td>
+                                            <td>Ana Costa</td>
+                                            <td class="text-center">20</td>
+                                            <td class="text-center">Ter/Qui 16h</td>
+                                            <td class="text-center"><span class="badge badge-success">88%</span></td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Outros Núcleos</strong></td>
-                                            <td class="text-center">362</td>
-                                            <td class="text-center">9</td>
-                                            <td class="text-center">18</td>
-                                            <td class="text-center"><span class="badge badge-success">87%</span></td>
+                                            <td><strong>Basquete</strong></td>
+                                            <td>Sub-12</td>
+                                            <td>Mariana Souza</td>
+                                            <td class="text-center">24</td>
+                                            <td class="text-center">Qua/Sex 14h</td>
+                                            <td class="text-center"><span class="badge badge-success">90%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Judô</strong></td>
+                                            <td>Sub-14</td>
+                                            <td>Paulo Santos</td>
+                                            <td class="text-center">19</td>
+                                            <td class="text-center">Seg/Qua 17h</td>
+                                            <td class="text-center"><span class="badge badge-success">94%</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -151,14 +178,14 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">trending_up</span>Modalidades Mais Procuradas</h3>
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">sports</span>Modalidades Oferecidas</h3>
                         </div>
                         <div class="card-body">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <span><span class="material-icons-outlined icon-inline">sports_soccer</span>Futebol</span>
-                                        <strong>287 alunos</strong>
+                                        <strong>53 alunos</strong>
                                     </div>
                                     <div class="progress" style="height: 8px;">
                                         <div class="progress-bar bg-success" style="width: 100%"></div>
@@ -167,28 +194,28 @@
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <span><span class="material-icons-outlined icon-inline">sports_volleyball</span>Vôlei</span>
-                                        <strong>156 alunos</strong>
+                                        <strong>42 alunos</strong>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-primary" style="width: 54%"></div>
+                                        <div class="progress-bar bg-primary" style="width: 79%"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
                                         <span><span class="material-icons-outlined icon-inline">sports_basketball</span>Basquete</span>
-                                        <strong>134 alunos</strong>
+                                        <strong>42 alunos</strong>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-info" style="width: 47%"></div>
+                                        <div class="progress-bar bg-info" style="width: 79%"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <span><span class="material-icons-outlined icon-inline">sports_handball</span>Handebol</span>
-                                        <strong>98 alunos</strong>
+                                        <span><span class="material-icons-outlined icon-inline">sports_martial_arts</span>Judô</span>
+                                        <strong>19 alunos</strong>
                                     </div>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar bg-warning" style="width: 34%"></div>
+                                        <div class="progress-bar bg-warning" style="width: 36%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +227,7 @@
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">notifications_active</span>Alertas</h3>
+                            <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">notifications_active</span>Alertas e Avisos</h3>
                         </div>
                         <div class="card-body">
                             <div class="alert alert-warning mb-3">

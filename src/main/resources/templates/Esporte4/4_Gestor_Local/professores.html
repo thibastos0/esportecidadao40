@@ -35,9 +35,9 @@
             </button>
             <div class="collapse navbar-collapse" id="gestorNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/gestor/dashboard">Painel</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Núcleos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/nucleos">Meu Núcleo</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/gestor/professores">Professores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gestor/materiais">Materiais</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/relatorios">Relatórios</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/configuracoes">Configurações</a></li>
                     <li class="nav-item"><a class="nav-link" href="/gestor/perfil">Meu Perfil</a></li>
@@ -53,36 +53,80 @@
 
     <main>
         <div class="container py-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="page-title mb-0">Gestão de Professores</h1>
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="page-title mb-1">Professores do Núcleo</h1>
+                    <small class="text-muted">Acompanhe os professores, turmas e modalidades do Núcleo Centro Cívico</small>
+                </div>
                 <button class="btn btn-primary">
                     <span class="material-icons-outlined icon-inline">person_add</span>
                     Novo Professor
                 </button>
             </div>
 
+            <!-- Indicadores rápidos -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2rem; color:#0d6efd;">badge</span>
+                            <h3 class="mt-2 mb-0">5</h3>
+                            <small class="text-muted">Professores</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2rem; color:#6f42c1;">sports</span>
+                            <h3 class="mt-2 mb-0">8</h3>
+                            <small class="text-muted">Turmas</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2rem; color:#198754;">groups</span>
+                            <h3 class="mt-2 mb-0">156</h3>
+                            <small class="text-muted">Alunos</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <span class="material-icons-outlined" style="font-size: 2rem; color:#fd7e14;">insights</span>
+                            <h3 class="mt-2 mb-0">92%</h3>
+                            <small class="text-muted">Frequência Média</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Filtros -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Buscar por nome...">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <span class="input-group-text bg-white"><span class="material-icons-outlined">search</span></span>
+                                <input type="text" class="form-control" placeholder="Buscar por nome ou e-mail...">
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <select class="form-select">
-                                <option value="">Filtrar por núcleo...</option>
-                                <option value="centro">Centro Cívico</option>
-                                <option value="morada">Morada do Sol</option>
-                                <option value="jardim">Jardim Paulista</option>
-                                <option value="furlan">Vila Furlan</option>
-                            </select>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="align-self-center text-muted me-2"><small>Filtrar por modalidade:</small></span>
+                                <button class="btn btn-sm btn-outline-secondary">Todas</button>
+                                <button class="btn btn-sm btn-outline-primary">Futebol</button>
+                                <button class="btn btn-sm btn-outline-primary">Vôlei</button>
+                                <button class="btn btn-sm btn-outline-primary">Basquete</button>
+                                <button class="btn btn-sm btn-outline-primary">Judô</button>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <select class="form-select">
-                                <option value="">Filtrar por modalidade...</option>
-                                <option value="futebol">Futebol</option>
-                                <option value="volei">Vôlei</option>
-                                <option value="basquete">Basquete</option>
+                    </div>
+                </div>
+            </div>
                                 <option value="handebol">Handebol</option>
                             </select>
                         </div>
@@ -93,7 +137,7 @@
             <!-- Lista de professores -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">people</span>24 Professores Cadastrados</h3>
+                    <h3 class="card-title"><span class="material-icons-outlined me-2 align-middle">people</span>5 Professores do Núcleo</h3>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -102,10 +146,10 @@
                                 <tr>
                                     <th>Professor</th>
                                     <th>CREF</th>
-                                    <th>Núcleo</th>
                                     <th>Turmas</th>
                                     <th>Alunos</th>
                                     <th>Modalidades</th>
+                                    <th>Status</th>
                                     <th class="text-center">Ações</th>
                                 </tr>
                             </thead>
@@ -115,23 +159,28 @@
                                         <div class="d-flex align-items-center">
                                             <span class="material-icons-outlined text-primary me-2">account_circle</span>
                                             <div>
-                                                <strong>Carlos Eduardo Silva</strong>
-                                                <br><small class="text-muted">carlos.silva@indaiatuba.sp.gov.br</small>
+                                                <strong>Carlos Mendes</strong>
+                                                <br><small class="text-muted">carlos.mendes@indaiatuba.sp.gov.br</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>123456-G/SP</td>
-                                    <td>Centro Cívico</td>
                                     <td class="text-center">3</td>
-                                    <td class="text-center">45</td>
+                                    <td class="text-center">58</td>
                                     <td><span class="badge badge-info">Futebol</span> <span class="badge badge-info">Futsal</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-center">
-                                        <button class="btn btn-sm btn-outline-primary me-1">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-secondary">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
-                                        </button>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Ações
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#">Desativar</a></li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -139,23 +188,28 @@
                                         <div class="d-flex align-items-center">
                                             <span class="material-icons-outlined text-primary me-2">account_circle</span>
                                             <div>
-                                                <strong>Ana Paula Santos</strong>
-                                                <br><small class="text-muted">ana.santos@indaiatuba.sp.gov.br</small>
+                                                <strong>Ana Costa</strong>
+                                                <br><small class="text-muted">ana.costa@indaiatuba.sp.gov.br</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>234567-G/SP</td>
-                                    <td>Centro Cívico</td>
                                     <td class="text-center">2</td>
-                                    <td class="text-center">32</td>
+                                    <td class="text-center">44</td>
                                     <td><span class="badge badge-info">Vôlei</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-center">
-                                        <button class="btn btn-sm btn-outline-primary me-1">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-secondary">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
-                                        </button>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Ações
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#">Desativar</a></li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -163,23 +217,28 @@
                                         <div class="d-flex align-items-center">
                                             <span class="material-icons-outlined text-primary me-2">account_circle</span>
                                             <div>
-                                                <strong>Ricardo Oliveira</strong>
-                                                <br><small class="text-muted">ricardo.oliveira@indaiatuba.sp.gov.br</small>
+                                                <strong>Roberto Lima</strong>
+                                                <br><small class="text-muted">roberto.lima@indaiatuba.sp.gov.br</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>345678-G/SP</td>
-                                    <td>Morada do Sol</td>
-                                    <td class="text-center">4</td>
-                                    <td class="text-center">58</td>
-                                    <td><span class="badge badge-info">Futebol</span> <span class="badge badge-info">Handebol</span></td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">38</td>
+                                    <td><span class="badge badge-info">Basquete</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-center">
-                                        <button class="btn btn-sm btn-outline-primary me-1">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-secondary">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
-                                        </button>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Ações
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#">Desativar</a></li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
@@ -187,23 +246,28 @@
                                         <div class="d-flex align-items-center">
                                             <span class="material-icons-outlined text-primary me-2">account_circle</span>
                                             <div>
-                                                <strong>Mariana Costa</strong>
-                                                <br><small class="text-muted">mariana.costa@indaiatuba.sp.gov.br</small>
+                                                <strong>Patricia Souza</strong>
+                                                <br><small class="text-muted">patricia.souza@indaiatuba.sp.gov.br</small>
                                             </div>
                                         </div>
                                     </td>
                                     <td>456789-G/SP</td>
-                                    <td>Jardim Paulista</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">28</td>
-                                    <td><span class="badge badge-info">Basquete</span></td>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">16</td>
+                                    <td><span class="badge badge-info">Judô</span></td>
+                                    <td><span class="badge badge-success">Ativo</span></td>
                                     <td class="text-center">
-                                        <button class="btn btn-sm btn-outline-primary me-1">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">edit</span>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-secondary">
-                                            <span class="material-icons-outlined" style="font-size: 18px;">visibility</span>
-                                        </button>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Ações
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Visualizar</a></li>
+                                                <li><a class="dropdown-item" href="#">Editar</a></li>
+                                                <li><hr class="dropdown-divider"></li>
+                                                <li><a class="dropdown-item text-danger" href="#">Desativar</a></li>
+                                            </ul>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>

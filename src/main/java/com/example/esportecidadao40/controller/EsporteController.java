@@ -40,7 +40,8 @@ public class EsporteController {
     @GetMapping("/do-login-gestor")
     public String doLoginGestor(HttpSession session) {
         session.setAttribute("gestorUsuario", "gestor-simulado");
-        return "redirect:/gestor/dashboard";
+        // Gestor local cai direto em "Meu Núcleo"
+        return "redirect:/gestor/nucleos";
     }
 
     // Simulated login for gestor ADM: sets gestorAdmUsuario and redirects to gestor-adm dashboard
@@ -122,13 +123,8 @@ public class EsporteController {
         return "Esporte4/3_Telas_Professor/presenca";
     }
 
-    @GetMapping("/professor/materiais")
-    public String professorMateriais(HttpSession session) {
-        if (session.getAttribute("professorUsuario") == null) {
-            return "redirect:/login";
-        }
-        return "Esporte4/3_Telas_Professor/materiais";
-    }
+    // Materiais passam a ser gerenciados pelo Gestor do Núcleo
+    // Rota removida do perfil Professor
 
     @GetMapping("/professor/comunicados")
     public String professorComunicados(HttpSession session) {
@@ -152,7 +148,8 @@ public class EsporteController {
         if (session.getAttribute("gestorUsuario") == null) {
             return "redirect:/login";
         }
-        return "Esporte4/4_Gestor_Local/dashboard";
+        // Unificação: redireciona o Painel para "Meu Núcleo"
+        return "redirect:/gestor/nucleos";
     }
 
     @GetMapping("/gestor/nucleos")
@@ -177,6 +174,14 @@ public class EsporteController {
             return "redirect:/login";
         }
         return "Esporte4/4_Gestor_Local/relatorios";
+    }
+
+    @GetMapping("/gestor/materiais")
+    public String gestorMateriais(HttpSession session) {
+        if (session.getAttribute("gestorUsuario") == null) {
+            return "redirect:/login";
+        }
+        return "Esporte4/4_Gestor_Local/materiais";
     }
 
     @GetMapping("/gestor/configuracoes")
