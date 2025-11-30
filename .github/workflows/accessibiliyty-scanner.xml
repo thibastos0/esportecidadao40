@@ -1,2 +1,0 @@
-- name: accessibility-scanner
-  uses: github/accessibility-scanner@v2.4.0

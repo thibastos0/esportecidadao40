@@ -1,0 +1,11 @@
+name: Teste_EsporteCidadao40
+on:
+  workflow_dispatch:
+jobs:
+  my_job:
+    name: teste AI Acessibilidade
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: accessibility-scanner
+      uses: github/accessibility-scanner@v2.4.0
