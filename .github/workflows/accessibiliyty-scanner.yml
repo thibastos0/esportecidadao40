@@ -1,11 +1,24 @@
 name: Teste_EsporteCidadao40
 on:
-  workflow_dispatch:
+  workflow_dispatch: #executado manualmente
+
+permissions: {}
+
 jobs:
-  my_job:
+  accessibility_scanner_Site:
     name: teste AI Acessibilidade
     runs-on: ubuntu-latest
-
     steps:
     - name: accessibility-scanner
       uses: github/accessibility-scanner@v2.4.0
+      with:
+        urls: |
+          https://esportecidadao40.onrender.com/
+        repository: thibastos0/esportecidadao40 # Provide a repository name-with-owner (in the format "primer/primer-docs"). This is where issues will be filed and where Copilot will open PRs; more information below.
+        token: ${{ secrets.GH_TOKEN }} # This token must have write access to the repo above (contents, issues, and PRs); more information below. Note: GitHub Actions' GITHUB_TOKEN cannot be used here.
+        cache_key: ${{ steps.generate_cache_key_outputs.cache_key }} # Provide a filename that will be used when caching results. We recommend including the name or domain of the site being scanned.
+        # login_url: # Optional: URL of the login page if authentication is required
+        # username: # Optional: Username for authentication
+        # password: ${{ secrets.PASSWORD }} # Optional: Password for authentication (use secrets!)
+        # auth_context: # Optional: Stringified JSON object for complex authentication
+        # skip_copilot_assignment: false # Optional: Set to true to skip assigning issues to GitHub Copilot (or if you don't have GitHub Copilot)
