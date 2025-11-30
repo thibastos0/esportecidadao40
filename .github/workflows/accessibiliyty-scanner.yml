@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: accessibility-scanner
-      uses: github/accessibility-scanner@v2.4.0
+      uses: github/accessibility-scanner@v2.5.0
       with:
         urls: |
           https://esportecidadao40.onrender.com/
